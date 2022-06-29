@@ -1,42 +1,100 @@
-<script setup>
-import { computed } from 'vue';
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-
-const props = defineProps({
-    status: String,
-});
-
-const form = useForm();
-
-const submit = () => {
-    form.post(route('verification.send'));
-};
-
-const verificationLinkSent = computed(() => props.status === 'verification-link-sent');
-</script>
-
 <template>
-    <BreezeGuestLayout>
-        <Head title="Email Verification" />
+  <breeze-guest-layout>
+    <inertia-head title="Email Verification" />
 
-        <div class="mb-4 text-sm text-gray-600">
-            Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
-        </div>
+    <div class="mb-4 text-sm text-gray-600">
+      Thanks for signing up! Before getting started, could you verify your email
+      address by clicking on the link we just emailed to you? If you didn't
+      receive the email, we will gladly send you another.
+    </div>
 
-        <div class="mb-4 font-medium text-sm text-green-600" v-if="verificationLinkSent" >
-            A new verification link has been sent to the email address you provided during registration.
-        </div>
+    <div
+      class="mb-4 font-medium text-sm text-green-600"
+      v-if="verificationLinkSent"
+    >
+      A new verification link has been sent to the email address you provided
+      during registration.
+    </div>
 
-        <form @submit.prevent="submit">
-            <div class="mt-4 flex items-center justify-between">
-                <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Resend Verification Email
-                </BreezeButton>
+    <form @submit.prevent="submit">
+      <div class="mt-4 flex items-center justify-between">
+        <breeze-button
+          :class="{ 'opacity-25': form.processing }"
+          :disabled="form.processing"
+        >
+          Resend Verification Email
+        </breeze-button>
 
-                <Link :href="route('logout')" method="post" as="button" class="underline text-sm text-gray-600 hover:text-gray-900">Log Out</Link>
-            </div>
-        </form>
-    </BreezeGuestLayout>
+        <inertia-link
+          :href="route('logout')"
+          method="post"
+          as="button"
+          class="underline text-sm text-gray-600 hover:text-gray-900"
+        >
+          Log Out
+        </inertia-link>
+      </div>
+    </form>
+  </breeze-guest-layout>
 </template>
+
+<script lang="ts">
+import {
+  computed,
+  defineComponent,
+  ref,
+  type Ref,
+  type ComputedRef,
+} from '@vue/composition-api';
+import { useInertia, route } from '@/plugins/inertia-helper';
+
+import BreezeButton from '@/components/Button.vue';
+import BreezeGuestLayout from '@/layouts/Guest.vue';
+import {
+  Head as InertiaHead,
+  Link as InertiaLink,
+} from '@inertiajs/inertia-vue';
+
+export default defineComponent({
+  /** Using Components */
+  components: {
+    BreezeButton,
+    BreezeGuestLayout,
+    InertiaHead,
+    InertiaLink,
+  },
+  /** Props Definition */
+  props: {
+    /** Status message */
+    status: { type: String, default: undefined },
+  },
+  /**
+   * Setup
+   * @param props - Props
+   */
+  setup(props) {
+    /** Get Inertia instance */
+    const inertia = useInertia();
+
+    /** Form */
+    const form: Ref<{ processing?: boolean }> = ref({});
+
+    /** Verification email send flag */
+    const verificationLinkSent: ComputedRef<boolean> = computed(
+      () => props.status === 'verification-link-sent'
+    );
+
+    /** Submit button handler */
+    const submit = () => {
+      inertia.post(route('verification.send'), form.value);
+    };
+
+    return {
+      form,
+      verificationLinkSent,
+      submit,
+      route,
+    };
+  },
+});
+</script>

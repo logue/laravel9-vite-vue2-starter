@@ -1,4 +1,5 @@
 import _ from 'lodash';
+// @ts-ignore
 window._ = _;
 
 /**
@@ -8,10 +9,9 @@ window._ = _;
  */
 
 import axios from 'axios';
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// @ts-ignore
 window.axios = axios;
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

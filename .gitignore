@@ -1,5 +1,5 @@
-/node_modules
 /public/build
+/node_modules
 /public/hot
 /public/storage
 /storage/*.key
@@ -7,9 +7,22 @@
 .env
 .env.backup
 .phpunit.result.cache
+docker-compose.override.yml
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/.yarn/*
+# !/.yarn/patches
+# !/.yarn/plugins
+!/.yarn/releases
+# !/.yarn/sdks
+# !/.yarn/cache
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+/resources/js/meta.ts

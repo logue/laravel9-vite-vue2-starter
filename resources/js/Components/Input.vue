@@ -1,19 +1,58 @@
-<script setup>
-import { onMounted, ref } from 'vue';
+<template>
+  <input
+    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+    :value="modelValue"
+    @input="onInput"
+    ref="input"
+  />
+</template>
 
-defineProps(['modelValue']);
+<script lang="ts">
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  type SetupContext,
+  type Ref,
+} from '@vue/composition-api';
 
-defineEmits(['update:modelValue']);
+export default defineComponent({
+  /** Model Definition */
+  model: {
+    prop: 'modelValue',
+    event: 'update:modelValue',
+  },
+  /** Props Definition */
+  props: {
+    modelValue: {
+      type: String,
+      default: undefined,
+    },
+  },
+  /** Emits */
+  emits: ['update:modelValue'],
+  /**
+   * Setup
+   *
+   * @param _props  - Props
+   * @param context - Context
+   */
+  setup(_props, context: SetupContext) {
+    const input: Ref<HTMLInputElement | undefined> = ref();
 
-const input = ref(null);
-
-onMounted(() => {
-    if (input.value.hasAttribute('autofocus')) {
+    onMounted(() => {
+      if (input.value && input.value.hasAttribute('autofocus')) {
         input.value.focus();
-    }
+      }
+    });
+
+    const onInput = (e: InputEvent) =>
+      context.emit('update:modelValue', (e.target as HTMLInputElement).value);
+
+    return {
+      input,
+      onInput,
+    };
+  },
 });
 </script>
-
-<template>
-    <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="input">
-</template>

@@ -1,8 +1,9 @@
 <template>
+  <!-- eslint-disable-next-line vuejs-accessibility/form-control-has-label -->
   <input
+    v-model="proxyChecked"
     type="checkbox"
     :value="value"
-    v-model="proxyChecked"
     class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
   />
 </template>
@@ -31,6 +32,7 @@ export default defineComponent({
   emits: ['update:checked'],
   /**
    * Setup
+   *
    * @param props - Props
    * @param context - Setup Context
    */

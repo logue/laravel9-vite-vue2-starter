@@ -151,7 +151,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, type Ref } from '@vue/composition-api';
-import { usePage } from '@/plugins/inertia-helper';
+import { usePage } from 'vue-inertia-composable';
 
 import BreezeApplicationLogo from '@/components/ApplicationLogo.vue';
 import BreezeDropdown from '@/components/Dropdown.vue';

@@ -47,7 +47,7 @@ settings:
     typescript: {}
     alias:
       map:
-        - ['@', './resources']
+        - ['@', './resources/js']
       extensions:
         - .js
         - .ts

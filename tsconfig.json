@@ -19,7 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "@/*": ["resources/js/*"]
+      "@/*": ["./resources/js/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -31,10 +31,10 @@
     "baseUrl": "."
   },
   "include": [
-    "resources/**/*.ts",
-    "resources/**/*.d.ts",
-    "resources/**/*.tsx",
-    "resources/**/*.vue"
+    "./resources/**/*.ts",
+    "./resources/**/*.d.ts",
+    "./resources/**/*.tsx",
+    "./resources/**/*.vue"
   ],
   "exclude": ["node_modules", "vendor", "public"],
   "references": [

@@ -9,11 +9,10 @@
         <breeze-label for="name" value="Name" />
         <breeze-input
           id="name"
+          v-model="form.name"
           type="text"
           class="mt-1 block w-full"
-          v-model="form.name"
           required
-          autofocus
           autocomplete="name"
         />
       </div>
@@ -22,9 +21,9 @@
         <breeze-label for="email" value="Email" />
         <breeze-input
           id="email"
+          v-model="form.email"
           type="email"
           class="mt-1 block w-full"
-          v-model="form.email"
           required
           autocomplete="username"
         />
@@ -34,9 +33,9 @@
         <breeze-label for="password" value="Password" />
         <breeze-input
           id="password"
+          v-model="form.password"
           type="password"
           class="mt-1 block w-full"
-          v-model="form.password"
           required
           autocomplete="new-password"
         />
@@ -46,9 +45,9 @@
         <breeze-label for="password_confirmation" value="Confirm Password" />
         <breeze-input
           id="password_confirmation"
+          v-model="form.password_confirmation"
           type="password"
           class="mt-1 block w-full"
-          v-model="form.password_confirmation"
           required
           autocomplete="new-password"
         />
@@ -76,13 +75,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, type Ref } from '@vue/composition-api';
-import { useInertia, route } from '@/plugins/inertia-helper';
+import { useInertia, route } from 'vue-inertia-composable';
 
-import BreezeButton from '@/components/Button.vue';
-import BreezeGuestLayout from '@/layouts/Guest.vue';
-import BreezeInput from '@/components/Input.vue';
-import BreezeLabel from '@/components/Label.vue';
-import BreezeValidationErrors from '@/components/ValidationErrors.vue';
+import BreezeButton from '@/Components/Button.vue';
+import BreezeGuestLayout from '@/Layouts/Guest.vue';
+import BreezeInput from '@/Components/Input.vue';
+import BreezeLabel from '@/Components/Label.vue';
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import {
   Head as InertiaHead,
   Link as InertiaLink,

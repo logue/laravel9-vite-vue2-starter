@@ -14,12 +14,11 @@
         <breeze-label for="password" value="Password" />
         <breeze-input
           id="password"
+          v-model="form.password"
           type="password"
           class="mt-1 block w-full"
-          v-model="form.password"
           required
           autocomplete="current-password"
-          autofocus
         />
       </div>
 
@@ -38,13 +37,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, type Ref } from '@vue/composition-api';
-import { useInertia, route } from '@/plugins/inertia-helper';
+import { useInertia, route } from 'vue-inertia-composable';
 
-import BreezeButton from '@/components/Button.vue';
-import BreezeGuestLayout from '@/layouts/Guest.vue';
-import BreezeInput from '@/components/Input.vue';
-import BreezeLabel from '@/components/Label.vue';
-import BreezeValidationErrors from '@/components/ValidationErrors.vue';
+import BreezeButton from '@/Components/Button.vue';
+import BreezeGuestLayout from '@/Layouts/Guest.vue';
+import BreezeInput from '@/Components/Input.vue';
+import BreezeLabel from '@/Components/Label.vue';
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import { Head as InertiaHead } from '@inertiajs/inertia-vue';
 
 export default defineComponent({

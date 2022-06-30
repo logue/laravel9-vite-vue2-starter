@@ -282,7 +282,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { usePage } from '@/plugins/inertia-helper';
+import { usePage } from 'vue-inertia-composable';
 
 import {
   Head as InertiaHead,

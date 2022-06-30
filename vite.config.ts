@@ -5,6 +5,7 @@ import { createVuePlugin as vue } from 'vite-plugin-vue2';
 import checker from 'vite-plugin-checker';
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 
 // https://vitejs.dev/config/
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
@@ -14,6 +15,14 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       fs: {
         // Allow serving files from one level up to the project root
         allow: ['..'],
+      },
+      host: process.env.LARAVEL_SAIL
+        ? Object.values(os.networkInterfaces())
+            .flat()
+            .find(info => info?.internal === false)?.address
+        : undefined,
+      hmr: {
+        host: 'localhost',
       },
     },
     plugins: [
@@ -44,16 +53,23 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         output: {
           manualChunks: {
             // Split external library from transpiled code.
-            vue: ['vue', 'vue2-teleport', 'deepmerge', '@vue/composition-api'],
+            vue: [
+              '@vue/composition-api',
+              'deepmerge',
+              'vue-inertia-composable',
+              'vue',
+              'vue2-teleport',
+            ],
             inertia: [
               '@inertiajs/inertia-vue/dist/index.js',
               '@inertiajs/inertia',
               'axios',
               'get-intrinsic',
-              'lodash.clonedeep',
-              'lodash.isequal',
+              'nprogress',
+              'lodash',
               'object-inspect',
               'qs',
+              'ziggy-js',
             ],
           },
           plugins: [

@@ -10,6 +10,7 @@
     "dev": "vite",
     "clean": "rimraf ./node_modules/.vite",
     "lint": "eslint . --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint && prettier . -w -u",
+    "lint:php": "composer fix",
     "lint:style": "stylelint \"./**/*.{css,sass,scss,htm,html,vue}\" --fix --cache-location ./node_modules/.vite/vite-plugin-stylelint  && prettier  \"./**/*.{css,sass,scss,htm,html,vue}\" -w -u",
     "lint:markup": "vue-tsc --noEmit",
     "build": "vue-tsc --noEmit && vite build",
@@ -48,7 +49,7 @@
     "eslint-plugin-vuejs-accessibility": "^1.2.0",
     "eslint-plugin-yaml": "^0.5.0",
     "husky": "^8.0.1",
-    "laravel-vite-plugin": "^0.2.3",
+    "laravel-vite-plugin": "^0.2.4",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
     "postcss-html": "^1.4.1",
@@ -66,7 +67,23 @@
     "vite-plugin-checker": "^0.4.6",
     "vite-plugin-vue2": "^2.0.1",
     "vue-eslint-parser": "^9.0.3",
+    "vue-inertia-composable": "^0.0.3",
     "vue-template-compiler": "^2.6.14",
     "vue-tsc": "^0.38.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.vue": "vue-tsc --noEmit",
+    "*.{js,ts,json,jsonc,json5,yaml,yml,toml,yml,yaml,vue,htm,html,md}": "eslint --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint",
+    "*.{css,sass,scss,vue,htm,html}": "stylelint --fix --cache --cache-location ./node_modules/.vite/vite-plugin-stylelint",
+    "*.php": "composer fix",
+    "*": "prettier -w -u"
+  },
+  "resolutions": {
+    "prettier": "^2.7.1"
   }
 }

@@ -46,10 +46,10 @@ import {
   type Ref,
   type ComputedRef,
 } from '@vue/composition-api';
-import { useInertia, route } from '@/plugins/inertia-helper';
+import { useInertia, route } from 'vue-inertia-composable';
 
-import BreezeButton from '@/components/Button.vue';
-import BreezeGuestLayout from '@/layouts/Guest.vue';
+import BreezeButton from '@/Components/Button.vue';
+import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import {
   Head as InertiaHead,
   Link as InertiaLink,

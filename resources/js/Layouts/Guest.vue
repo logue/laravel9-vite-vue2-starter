@@ -17,9 +17,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 
-import BreezeApplicationLogo from '@/components/ApplicationLogo.vue';
+import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { Link as InertiaLink } from '@inertiajs/inertia-vue';
 
 export default defineComponent({

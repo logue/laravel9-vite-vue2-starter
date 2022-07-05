@@ -9,12 +9,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  type Ref,
-  type SetupContext,
-} from '@vue/composition-api';
+import { defineComponent, computed, type Ref, type SetupContext } from 'vue';
 
 export default defineComponent({
   /** Props Definition */

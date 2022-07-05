@@ -5,11 +5,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  type ComputedRef,
-} from '@vue/composition-api';
+import { computed, defineComponent, type ComputedRef } from 'vue';
 import { useInertia } from 'vue-inertia-composable';
 
 import { Link as InertiaLink } from '@inertiajs/inertia-vue';

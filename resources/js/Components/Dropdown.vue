@@ -43,7 +43,7 @@ import {
   ref,
   type ComputedRef,
   type Ref,
-} from '@vue/composition-api';
+} from 'vue';
 
 export default defineComponent({
   /** Props Definition */

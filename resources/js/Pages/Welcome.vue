@@ -250,7 +250,6 @@
             <svg
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
               viewBox="0 0 24 24"
@@ -281,7 +280,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import { usePage } from 'vue-inertia-composable';
 
 import {

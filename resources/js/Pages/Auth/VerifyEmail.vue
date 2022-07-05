@@ -45,7 +45,7 @@ import {
   ref,
   type Ref,
   type ComputedRef,
-} from '@vue/composition-api';
+} from 'vue';
 import { useInertia, route } from 'vue-inertia-composable';
 
 import BreezeButton from '@/Components/Button.vue';

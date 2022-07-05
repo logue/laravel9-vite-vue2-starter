@@ -1,7 +1,7 @@
 import { defineConfig, type UserConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { createVuePlugin as vue } from 'vite-plugin-vue2';
+import vue from '@vitejs/plugin-vue2';
 import checker from 'vite-plugin-checker';
 import path from 'path';
 import fs from 'fs';
@@ -27,20 +27,19 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     plugins: [
       // Laravel Vite
-      // https://laravel-vite.dev/
+      // https://laravel.com/docs/9.x/vite
       laravel({
-        input: 'resources/js/app.ts',
+        input: ['resources/js/app.ts'],
+        refresh: true,
       }),
       // Vue2
-      // https://github.com/underfin/vite-plugin-vue2
-      vue({
-        target: 'esnext',
-      }),
+      // https://github.com/vitejs/vite-plugin-vue2
+      vue(),
       // vite-plugin-checker
       // https://github.com/fi3ework/vite-plugin-checker
       checker({
         typescript: true,
-        vueTsc: true,
+        vueTsc: false,
         eslint: {
           lintCommand: 'eslint', // for example, lint .ts & .tsx
         },
@@ -54,23 +53,23 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           manualChunks: {
             // Split external library from transpiled code.
             vue: [
-              '@vue/composition-api',
               'deepmerge',
               'vue-inertia-composable',
               'vue',
               'vue2-teleport',
             ],
             inertia: [
+              'laravel-vite-plugin/inertia-helpers/index.js',
               '@inertiajs/inertia-vue/dist/index.js',
               '@inertiajs/inertia',
-              'axios',
               'get-intrinsic',
               'nprogress',
-              'lodash',
               'object-inspect',
               'qs',
               'ziggy-js',
             ],
+            axios: ['axios'],
+            lodash: ['lodash'],
           },
           plugins: [
             mode === 'analyze'

@@ -8,11 +8,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  type ComputedRef,
-} from '@vue/composition-api';
+import { computed, defineComponent, type ComputedRef } from 'vue';
 import { usePage } from 'vue-inertia-composable';
 
 export default defineComponent({

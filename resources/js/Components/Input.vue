@@ -14,7 +14,7 @@ import {
   ref,
   type SetupContext,
   type Ref,
-} from '@vue/composition-api';
+} from 'vue';
 
 export default defineComponent({
   /** Model Definition */

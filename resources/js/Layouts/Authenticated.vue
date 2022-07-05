@@ -150,14 +150,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref } from '@vue/composition-api';
+import { defineComponent, ref, type Ref } from 'vue';
 import { usePage } from 'vue-inertia-composable';
 
-import BreezeApplicationLogo from '@/components/ApplicationLogo.vue';
-import BreezeDropdown from '@/components/Dropdown.vue';
-import BreezeDropdownLink from '@/components/DropdownLink.vue';
-import BreezeNavLink from '@/components/NavLink.vue';
-import BreezeResponsiveNavLink from '@/components/ResponsiveNavLink.vue';
+import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
+import BreezeDropdown from '@/Components/Dropdown.vue';
+import BreezeDropdownLink from '@/Components/DropdownLink.vue';
+import BreezeNavLink from '@/Components/NavLink.vue';
+import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link as InertiaLink } from '@inertiajs/inertia-vue';
 
 export default defineComponent({

@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from '@vue/composition-api';
+import { defineComponent, type PropType } from 'vue';
 
 export default defineComponent({
   /** Props Definition */

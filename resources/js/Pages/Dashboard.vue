@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head as InertiaHead } from '@inertiajs/inertia-vue';

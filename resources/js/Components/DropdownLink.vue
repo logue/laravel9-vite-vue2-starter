@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import { useInertia } from 'vue-inertia-composable';
 
 import { Link as InertiaLink } from '@inertiajs/inertia-vue';

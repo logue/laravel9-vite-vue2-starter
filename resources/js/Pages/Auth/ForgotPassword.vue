@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref } from '@vue/composition-api';
+import { defineComponent, ref, type Ref } from 'vue';
 import { useInertia, route } from 'vue-inertia-composable';
 
 import BreezeButton from '@/Components/Button.vue';

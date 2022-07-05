@@ -36,7 +36,7 @@
     "./resources/**/*.tsx",
     "./resources/**/*.vue"
   ],
-  "exclude": ["node_modules", "vendor", "public"],
+  "exclude": ["./node_modules", "./vendor/**/*", "./public"],
   "references": [
     {
       "path": "./tsconfig.node.json"

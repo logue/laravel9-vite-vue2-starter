@@ -1,31 +1,14 @@
-/* eslint-disable */
+// eslint-disable-next-line
 /// <reference types="vite/client" />
-
-import { Route } from 'ziggy-js';
-
 declare module '*.vue' {
-  import Vue from 'vue';
-  const component: ReturnType<typeof defineComponent>;
-  export default component;
+  import type Vue from 'vue';
+  export default Vue;
 }
 
-declare module 'vue/types/vue' {
-  import Vue from 'vue';
-  import { Inertia } from '@inertiajs/inertia';
-  import Page from '@inertiajs/inertia/types/Page';
-  interface Vue {
-    readonly $inertia: Inertia;
-    readonly $page: Page;
-    readonly route;
-  }
-}
-
-declare type route = Route;
-
-declare module 'vue/types/options' {
-  interface ComponentOptions<V extends Vue> {
-    layout?: any;
-  }
+// eslint-disable-next-line no-unused-vars
+declare module route {
+  import type { Route } from 'ziggy-js';
+  export default Route;
 }
 
 interface ImportMetaEnv {
@@ -35,6 +18,7 @@ interface ImportMetaEnv {
   readonly VITE_APP_WEBSTORAGE_NAMESPACE: string;
 }
 
+// eslint-disable-next-line no-unused-vars
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }

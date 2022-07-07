@@ -5,3 +5,4 @@ public/
 storage/
 vendor/
 resources/js/ziggy.js
+tsconfig.node.json

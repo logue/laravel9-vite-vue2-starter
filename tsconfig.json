@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
+    "allowJs": false,
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "types",
@@ -24,7 +24,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
+    "strict": false,
     "target": "esnext",
     "types": ["vite/client", "node", "vue"],
     "useDefineForClassFields": true,
@@ -36,10 +36,6 @@
     "./resources/**/*.tsx",
     "./resources/**/*.vue"
   ],
-  "exclude": ["./node_modules", "./vendor/**/*", "./public"],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  "exclude": ["node_modules", "dist"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

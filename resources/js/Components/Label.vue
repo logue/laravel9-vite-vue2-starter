@@ -12,7 +12,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   /** Props Definition */
   props: {
-    /** Lavel text */
+    /** Label text */
     value: { type: String, default: undefined },
   },
 });

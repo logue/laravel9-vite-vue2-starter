@@ -34,7 +34,24 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       }),
       // Vue2
       // https://github.com/vitejs/vite-plugin-vue2
-      vue(),
+      vue({
+        template: {
+          transformAssetUrls: {
+            // The Vue plugin will re-write asset URLs, when referenced
+            // in Single File Components, to point to the Laravel web
+            // server. Setting this to `null` allows the Laravel plugin
+            // to instead re-write asset URLs to point to the Vite
+            // server instead.
+            base: null,
+
+            // The Vue plugin will parse absolute URLs and treat them
+            // as absolute paths to files on disk. Setting this to
+            // `false` will leave absolute URLs un-touched so they can
+            // reference assets in the public directly as expected.
+            // includeAbsolute: false,
+          },
+        },
+      }),
       // vite-plugin-checker
       // https://github.com/fi3ework/vite-plugin-checker
       checker({
@@ -53,19 +70,29 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           manualChunks: {
             // Split external library from transpiled code.
             vue: [
-              'deepmerge',
-              'vue-inertia-composable',
               'vue',
+              // 'vue-class-component',
+              // 'vue-property-decorator',
+              // 'vue-router',
+              // 'vuex',
+              // 'vuex-persist',
               'vue2-teleport',
+              'deepmerge',
+              // '@logue/vue2-helpers',
+              // '@logue/vue2-helpers/vue-router',
+              // '@logue/vue2-helpers/vuex',
             ],
             inertia: [
-              'laravel-vite-plugin/inertia-helpers/index.js',
               '@inertiajs/inertia-vue/dist/index.js',
               '@inertiajs/inertia',
+              '@inertiajs/progress',
               'get-intrinsic',
+              'laravel-vite-plugin/inertia-helpers/index.js',
               'nprogress',
               'object-inspect',
               'qs',
+              'vendor/tightenco/ziggy/dist/vue.m.js',
+              'vue-inertia-composable',
               'ziggy-js',
             ],
             axios: ['axios'],

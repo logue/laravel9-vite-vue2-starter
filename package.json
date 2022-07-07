@@ -13,8 +13,8 @@
     "lint:php": "composer fix",
     "lint:style": "stylelint \"./**/*.{css,sass,scss,htm,html,vue}\" --fix --cache-location ./node_modules/.vite/vite-plugin-stylelint  && prettier  \"./**/*.{css,sass,scss,htm,html,vue}\" -w -u",
     "lint:markup": "vue-tsc --noEmit",
-    "build": "vue-tsc --noEmit && vite build",
-    "build:analyze": "vue-tsc --noEmit && vite build --mode analyze",
+    "build": "vite build",
+    "build:analyze": "vite build --mode analyze",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -25,13 +25,13 @@
     "alpinejs": "^3.10.2",
     "axios": "^0.27",
     "tailwindcss": "^3.1.4",
-    "vue": "^2.7.0",
-    "vue-inertia-composable": "^0.1.0",
+    "vue": "^2.7.3",
+    "vue-inertia-composable": "^0.1.1",
     "vue2-teleport": "^1.0.1",
     "ziggy-js": "^1.4.6"
   },
   "devDependencies": {
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.0.3",
     "@types/ziggy-js": "^1.3.2",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
@@ -41,19 +41,21 @@
     "eslint": "^8.19.0",
     "eslint-config-google": "^0.14.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-typescript": "^3.2.1",
+    "eslint-import-resolver-typescript": "^3.2.4",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsdoc": "^39.3.3",
+    "eslint-plugin-json-schema-validator": "^3.1.3",
+    "eslint-plugin-jsonc": "^2.3.1",
     "eslint-plugin-tsdoc": "^0.2.16",
-    "eslint-plugin-vue": "^9.1.1",
+    "eslint-plugin-vue": "^9.2.0",
     "eslint-plugin-vuejs-accessibility": "^1.2.0",
     "eslint-plugin-yaml": "^0.5.0",
     "husky": "^8.0.1",
-    "laravel-vite-plugin": "^0.2.4",
+    "laravel-vite-plugin": "^0.3.0",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
-    "postcss-html": "^1.4.1",
+    "postcss-html": "^1.5.0",
     "postcss-scss": "^4.0.4",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
@@ -64,10 +66,10 @@
     "stylelint-order": "^5.0.0",
     "typescript": "^4.7.4",
     "vite": "^2.9.13",
-    "vite-plugin-checker": "^0.4.7",
+    "vite-plugin-checker": "^0.4.8",
     "vue-eslint-parser": "^9.0.3",
-    "vue-template-compiler": "^2.7.1",
-    "vue-tsc": "^0.38.2"
+    "vue-template-compiler": "^2.7.3",
+    "vue-tsc": "^0.38.3"
   },
   "husky": {
     "hooks": {
@@ -75,7 +77,6 @@
     }
   },
   "lint-staged": {
-    "*.vue": "vue-tsc --noEmit",
     "*.{js,ts,json,jsonc,json5,yaml,yml,toml,yml,yaml,vue,htm,html,md}": "eslint --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint",
     "*.{css,sass,scss,vue,htm,html}": "stylelint --fix --cache --cache-location ./node_modules/.vite/vite-plugin-stylelint",
     "*.php": "composer fix",

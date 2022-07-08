@@ -496,14 +496,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-sfc@npm:2.7.3":
-  version: 2.7.3
-  resolution: "@vue/compiler-sfc@npm:2.7.3"
+"@vue/compiler-sfc@npm:2.7.4":
+  version: 2.7.4
+  resolution: "@vue/compiler-sfc@npm:2.7.4"
   dependencies:
     "@babel/parser": ^7.18.4
     postcss: ^8.4.14
     source-map: ^0.6.1
-  checksum: 98aeb285ce18b70f7edb8945bfcaef573c0c4005810a43417bfe9c7e1502d8efbc50a9628497b872d38c1a03db05db966a4e0a191eb25472fb5ba108ac75d987
+  checksum: f4f4ce4196b1f3668b4e15dfff969b6e2d06aadff9431608ffe977ce1b184eef99fc5553d9770f41960d3543b3dae37f3a8ea9732b80be9ae018a334140d1ec6
   languageName: node
   linkType: hard
 
@@ -4346,12 +4346,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-load-config@npm:^3.1.4":
-  version: 3.1.4
-  resolution: "postcss-load-config@npm:3.1.4"
+"postcss-load-config@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "postcss-load-config@npm:4.0.1"
   dependencies:
     lilconfig: ^2.0.5
-    yaml: ^1.10.2
+    yaml: ^2.1.1
   peerDependencies:
     postcss: ">=8.0.9"
     ts-node: ">=9.0.0"
@@ -4360,7 +4360,7 @@ __metadata:
       optional: true
     ts-node:
       optional: true
-  checksum: 1c589504c2d90b1568aecae8238ab993c17dba2c44f848a8f13619ba556d26a1c09644d5e6361b5784e721e94af37b604992f9f3dc0483e687a0cc1cc5029a34
+  checksum: b61f890499ed7dcda1e36c20a9582b17d745bad5e2b2c7bc96942465e406bc43ae03f270c08e60d1e29dab1ee50cb26970b5eb20c9aae30e066e20bd607ae4e4
   languageName: node
   linkType: hard
 
@@ -4650,7 +4650,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.20.0, resolve@npm:^1.22.0":
+"resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.20.0, resolve@npm:^1.22.0, resolve@npm:^1.22.1":
   version: 1.22.1
   resolution: "resolve@npm:1.22.1"
   dependencies:
@@ -4673,7 +4673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
   version: 1.22.1
   resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
   dependencies:
@@ -4811,14 +4811,14 @@ __metadata:
     stylelint-config-recommended-scss: ^6.0.0
     stylelint-config-recommended-vue: ^1.4.0
     stylelint-order: ^5.0.0
-    tailwindcss: ^3.1.4
+    tailwindcss: ^3.1.5
     typescript: ^4.7.4
-    vite: ^2.9.13
+    vite: ^2.9.14
     vite-plugin-checker: ^0.4.8
-    vue: ^2.7.3
+    vue: ^2.7.4
     vue-eslint-parser: ^9.0.3
     vue-inertia-composable: ^0.1.1
-    vue-template-compiler: ^2.7.3
+    vue-template-compiler: ^2.7.4
     vue-tsc: ^0.38.3
     vue2-teleport: ^1.0.1
     ziggy-js: ^1.4.6
@@ -5391,9 +5391,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.1.4":
-  version: 3.1.4
-  resolution: "tailwindcss@npm:3.1.4"
+"tailwindcss@npm:^3.1.5":
+  version: 3.1.5
+  resolution: "tailwindcss@npm:3.1.5"
   dependencies:
     arg: ^5.0.2
     chokidar: ^3.5.3
@@ -5411,18 +5411,18 @@ __metadata:
     postcss: ^8.4.14
     postcss-import: ^14.1.0
     postcss-js: ^4.0.0
-    postcss-load-config: ^3.1.4
+    postcss-load-config: ^4.0.1
     postcss-nested: 5.0.6
     postcss-selector-parser: ^6.0.10
     postcss-value-parser: ^4.2.0
     quick-lru: ^5.1.1
-    resolve: ^1.22.0
+    resolve: ^1.22.1
   peerDependencies:
     postcss: ^8.0.9
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 716b7d80e51c4904d845920cbb88483114ae6f14b20328b9206f49fd642bbcd390b9764fc574f85901b0377184c5d4eb94c00bcf73e280f81e772cf621d390a5
+  checksum: 9b66bb481e63596d299ca994b745f0b99b1f0958148fe7a6b1b43436fe786865215b319b97fd6be1cd1050cf458656af98a0ec35f91cc5af97e3b771e8544746
   languageName: node
   linkType: hard
 
@@ -5734,9 +5734,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^2.9.13":
-  version: 2.9.13
-  resolution: "vite@npm:2.9.13"
+"vite@npm:^2.9.14":
+  version: 2.9.14
+  resolution: "vite@npm:2.9.14"
   dependencies:
     esbuild: ^0.14.27
     fsevents: ~2.3.2
@@ -5759,7 +5759,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: a5e501b920a448c352e9b3836019dea56c523535f8e8540160708c2e164d84da6655ae39abbba1e2888092f5c6cd03dd06279852422359b51be601914645f49f
+  checksum: f78b54f58482ea97d385e36873ae1aa4744c5e467c1d6d4e0835bd55494d2d8f6ce763f17c241c66104be687d5ee535b8e1e96c14210c9ba0c343fe78c58f694
   languageName: node
   linkType: hard
 
@@ -5852,13 +5852,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-template-compiler@npm:^2.7.3":
-  version: 2.7.3
-  resolution: "vue-template-compiler@npm:2.7.3"
+"vue-template-compiler@npm:^2.7.4":
+  version: 2.7.4
+  resolution: "vue-template-compiler@npm:2.7.4"
   dependencies:
     de-indent: ^1.0.2
     he: ^1.2.0
-  checksum: 664f46ad2bcfaf0f5cebba095db47024101c124f8408aa1767d0d7cc32189272c654cdb6eae72eb76a6d554614f65be299207bb40490027175b6210604ae955c
+  checksum: 01d0f670c1abf96407b2b7d70a0ca3976e7ef397d7184f3e0443d0d09d4962cc1d30b54858c5a97091efc1727cd1fd18eb8ff5bd9171a0e07bbce1074c83da81
   languageName: node
   linkType: hard
 
@@ -5882,13 +5882,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue@npm:^2.7.3":
-  version: 2.7.3
-  resolution: "vue@npm:2.7.3"
+"vue@npm:^2.7.4":
+  version: 2.7.4
+  resolution: "vue@npm:2.7.4"
   dependencies:
-    "@vue/compiler-sfc": 2.7.3
+    "@vue/compiler-sfc": 2.7.4
     csstype: ^3.1.0
-  checksum: f1e01e2e66ae4308180292729d887a4b374339fbcfd4e676bb06aa03422146f30cc9fba2cf235ab82d89ce2e5f2872607c51610f2aa0ee4acc4536830842f4c6
+  checksum: 5347f88b43b9addf061944739550e00c19d031bf1f36d2b7c2eb321a3df7ff329be52eadd2fe7d267cd9358f8ba45386225fca8e77a863c6cdc67f2e3fdd9a89
   languageName: node
   linkType: hard
 
@@ -6021,7 +6021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^1.10.0, yaml@npm:^1.10.2":
+"yaml@npm:^1.10.0":
   version: 1.10.2
   resolution: "yaml@npm:1.10.2"
   checksum: ce4ada136e8a78a0b08dc10b4b900936912d15de59905b2bf415b4d33c63df1d555d23acb2a41b23cf9fb5da41c256441afca3d6509de7247daa062fd2c5ea5f

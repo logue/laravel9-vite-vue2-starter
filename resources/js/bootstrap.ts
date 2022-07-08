@@ -10,6 +10,7 @@ window._ = _;
 
 import axios from 'axios';
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.withCredentials = true;
 // @ts-ignore
 window.axios = axios;
 /**
@@ -32,3 +33,5 @@ window.axios = axios;
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+export { axios };

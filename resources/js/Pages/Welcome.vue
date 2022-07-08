@@ -281,7 +281,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { usePage } from 'vue-inertia-composable';
+import { usePage, route } from 'vue-inertia-composable';
 
 import {
   Head as InertiaHead,
@@ -314,6 +314,7 @@ export default defineComponent({
 
     return {
       page,
+      route,
     };
   },
 });

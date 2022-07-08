@@ -62,8 +62,7 @@
         </inertia-link>
 
         <breeze-button
-          class="ml-4"
-          :class="{ 'opacity-25': form.processing }"
+          :class="`ml-4 ${{ 'opacity-25': form.processing }}`"
           :disabled="form.processing"
         >
           Register
@@ -140,6 +139,7 @@ export default defineComponent({
     return {
       form,
       submit,
+      route,
     };
   },
 });

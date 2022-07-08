@@ -126,6 +126,7 @@ export default defineComponent({
     return {
       form,
       submit,
+      route,
     };
   },
 });

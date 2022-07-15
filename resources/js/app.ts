@@ -16,6 +16,7 @@ const appName =
 createInertiaApp({
   title: title => `${title} - ${appName}`,
   resolve: name =>
+    // @ts-ignore
     resolvePageComponent(
       `./Pages/${name}.vue`,
       import.meta.glob('./Pages/**/*.vue')

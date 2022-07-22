@@ -35,7 +35,7 @@ class Vite
             );
         }
 
-        $manifestPath = public_path($buildDirectory . '/manifest.json');
+        $manifestPath = public_path($buildDirectory.'/manifest.json');
 
         if (! isset($manifests[$manifestPath])) {
             if (! is_file($manifestPath)) {
@@ -75,7 +75,7 @@ class Vite
 
         [$stylesheets, $scripts] = $tags->partition(fn ($tag) => str_starts_with($tag, '<link'));
 
-        return new HtmlString($stylesheets->join('') . $scripts->join(''));
+        return new HtmlString($stylesheets->join('').$scripts->join(''));
     }
 
     /**

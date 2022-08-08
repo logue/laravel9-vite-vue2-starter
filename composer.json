@@ -11,17 +11,17 @@
   "require": {
     "php": "^8.0.2",
     "guzzlehttp/guzzle": "^7.2",
-    "inertiajs/inertia-laravel": "^0.5.4",
+    "inertiajs/inertia-laravel": "^0.6.3",
     "itsgoingd/clockwork": "^5.1",
     "laravel/framework": "^9.19",
-    "laravel/sanctum": "^2.14.1",
+    "laravel/sanctum": "^3.0",
     "laravel/tinker": "^2.7",
     "tightenco/ziggy": "^1.0"
   },
   "require-dev": {
     "fakerphp/faker": "^1.9.1",
     "laravel/pint": "^1.0",
-    "laravel/breeze": "^1.9",
+    "laravel/breeze": "^1.11.3",
     "laravel/sail": "^1.0.1",
     "mockery/mockery": "^1.4.4",
     "nunomaduro/collision": "^6.1",
@@ -66,7 +66,10 @@
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true

@@ -4,9 +4,7 @@
   "compilerOptions": {
     "newLine": "lf",
     "noImplicitAny": false,
-    "paths": {
-      "@/*": ["./resources/js/*"]
-    },
+    "paths": { "@/*": ["./resources/js/*"] },
     "types": ["vite/client", "node", "vue"]
   },
   "include": [
@@ -16,12 +14,6 @@
     "./resources/**/*.vue"
   ],
   "exclude": ["node_modules", "vendor", "public"],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
-  "vueCompilerOptions": {
-    "target": 2.7
-  }
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "vueCompilerOptions": { "target": 2.7 }
 }

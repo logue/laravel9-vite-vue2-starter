@@ -2,6 +2,7 @@ import './bootstrap';
 import '../css/app.css';
 
 import Vue from 'vue';
+import Teleport from 'vue2-teleport';
 import { createInertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -24,12 +25,18 @@ createInertiaApp({
   setup({ el, app, props, plugin }) {
     // Add route function.
     Vue.mixin({ methods: { route: ziggy } });
+    // Register Inertia
     Vue.use(plugin);
+    // Telepot for vue2.
+    Vue.component('Teleport', Teleport);
     // @ts-ignore
     Vue.use(ZiggyVue, Ziggy);
+
     const App = new Vue({ render: h => h(app, props) });
     return App.$mount(el);
   },
 });
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({
+  color: import.meta.env.VITE_APP_INERTIA_PROGRESS_COLOR || '#4B5563',
+});

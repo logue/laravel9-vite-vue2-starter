@@ -5,7 +5,7 @@
     "newLine": "lf",
     "noImplicitAny": false,
     "paths": { "@/*": ["./resources/js/*"] },
-    "types": ["vite/client", "node", "vue"]
+    "types": ["vite/client", "vue"]
   },
   "include": [
     "./resources/**/*.ts",

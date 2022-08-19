@@ -24,6 +24,8 @@ interface ImportMetaEnv {
 
   readonly VITE_APP_TITLE: string;
   readonly VITE_APP_WEBSTORAGE_NAMESPACE: string;
+
+  readonly VITE_APP_INERTIA_PROGRESS_COLOR: string;
 }
 
 // eslint-disable-next-line no-unused-vars

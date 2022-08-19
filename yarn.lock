@@ -275,10 +275,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.182":
-  version: 4.14.182
-  resolution: "@types/lodash@npm:4.14.182"
-  checksum: 7dd137aa9dbabd632408bd37009d984655164fa1ecc3f2b6eb94afe35bf0a5852cbab6183148d883e9c73a958b7fec9a9bcf7c8e45d41195add6a18c34958209
+"@types/lodash@npm:^4.14.184":
+  version: 4.14.184
+  resolution: "@types/lodash@npm:4.14.184"
+  checksum: 6d9a4d67f7f9d0ec3fd21174f3dd3d00629dc1227eb469450eace53adbc1f7e2330699c28d0fe093e5f0fef0f0e763098be1f779268857213224af082b62be21
   languageName: node
   linkType: hard
 
@@ -289,10 +289,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.7.5":
-  version: 18.7.5
-  resolution: "@types/node@npm:18.7.5"
-  checksum: f74426f2c9e81ab00e35ddca8db84efb6eb6c77e6d120bbe84d462073c371fa46e4744bd87773d9f7cf9074cf575df573bb89c3335f38f4ecbef2f03b407f35f
+"@types/node@npm:^18.7.8":
+  version: 18.7.8
+  resolution: "@types/node@npm:18.7.8"
+  checksum: e0125efefa896083c05f549d93166109959ffdd68cb626aad0d660c0ce9de888fe405b4763b4a3c3e0968560409c272413e0ad07204522543c688e162a617ecb
   languageName: node
   linkType: hard
 
@@ -2017,9 +2017,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-typescript@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "eslint-import-resolver-typescript@npm:3.4.1"
+"eslint-import-resolver-typescript@npm:^3.4.2":
+  version: 3.4.2
+  resolution: "eslint-import-resolver-typescript@npm:3.4.2"
   dependencies:
     debug: ^4.3.4
     enhanced-resolve: ^5.10.0
@@ -2027,11 +2027,11 @@ __metadata:
     globby: ^13.1.2
     is-core-module: ^2.9.0
     is-glob: ^4.0.3
-    synckit: ^0.8.1
+    synckit: ^0.8.3
   peerDependencies:
     eslint: "*"
     eslint-plugin-import: "*"
-  checksum: 952aaa4f25435b009e6604bf8a81acee2db064de1cefcac0628fd5167711721829e911910534f8773fbfe6a12c21d60bb0d324351ad25cd092481d9f80f6105d
+  checksum: e54d8c02542cc85fc9703a064111a25585a7189b61445a209792ae50b718d273e5522be44c61f149f59292570eef6a08036d988c8477da9f6d8f3c6177801319
   languageName: node
   linkType: hard
 
@@ -3384,14 +3384,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"laravel-vite-plugin@npm:^0.5.3":
-  version: 0.5.3
-  resolution: "laravel-vite-plugin@npm:0.5.3"
+"laravel-vite-plugin@npm:^0.5.4":
+  version: 0.5.4
+  resolution: "laravel-vite-plugin@npm:0.5.4"
   dependencies:
     vite-plugin-full-reload: ^1.0.1
   peerDependencies:
     vite: ^3.0.0
-  checksum: 3b596d91c113ffeb2f2ebfa8b92b49baaf15ddfa62721cdeabb6049bc199b3ff2ff75f0c414e5d6dc672076716fdbf27f37061138111452bfce81d8e030fbdb9
+  checksum: 0125616db1baabb8139cda81ec895767939337a050c0c2e8f9bb60aebe1a48632115eb3e71af88376d2505c17ef557ce457ad6ba8cf2c542af3be4bb9ab19f7c
   languageName: node
   linkType: hard
 
@@ -4766,8 +4766,8 @@ __metadata:
     "@inertiajs/inertia-vue": ^0.8.0
     "@inertiajs/progress": ^0.2.7
     "@tailwindcss/forms": ^0.5.2
-    "@types/lodash": ^4.14.182
-    "@types/node": ^18.7.5
+    "@types/lodash": ^4.14.184
+    "@types/node": ^18.7.8
     "@types/ziggy-js": ^1.3.2
     "@typescript-eslint/eslint-plugin": ^5.33.1
     "@typescript-eslint/parser": ^5.33.1
@@ -4780,7 +4780,7 @@ __metadata:
     eslint: ^8.22.0
     eslint-config-google: ^0.14.0
     eslint-import-resolver-alias: ^1.1.2
-    eslint-import-resolver-typescript: ^3.4.1
+    eslint-import-resolver-typescript: ^3.4.2
     eslint-plugin-html: ^7.1.0
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jsdoc: ^39.3.6
@@ -4790,7 +4790,7 @@ __metadata:
     eslint-plugin-vuejs-accessibility: ^1.2.0
     eslint-plugin-yaml: ^0.5.0
     husky: ^8.0.1
-    laravel-vite-plugin: ^0.5.3
+    laravel-vite-plugin: ^0.5.4
     lint-staged: ^13.0.3
     normalize.css: ^8.0.1
     postcss: ^8.4.16
@@ -4805,12 +4805,12 @@ __metadata:
     stylelint-order: ^5.0.0
     tailwindcss: ^3.1.8
     typescript: ^4.7.4
-    vite: ^3.0.7
+    vite: ^3.0.9
     vite-plugin-checker: ^0.4.9
     vue: ^2.7.9
     vue-eslint-parser: ^9.0.3
     vue-inertia-composable: ^0.1.2
-    vue-template-compiler: ^2.7.8
+    vue-template-compiler: ^2.7.9
     vue-tsc: ^0.40.1
     vue2-teleport: ^1.0.1
     ziggy-js: ^1.4.6
@@ -5349,13 +5349,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"synckit@npm:^0.8.1":
-  version: 0.8.1
-  resolution: "synckit@npm:0.8.1"
+"synckit@npm:^0.8.3":
+  version: 0.8.3
+  resolution: "synckit@npm:0.8.3"
   dependencies:
     "@pkgr/utils": ^2.3.0
     tslib: ^2.4.0
-  checksum: 36a1b699996f3bb251c8f828364e101cf08b2a20225cb39df9d7c2186380554b8172374babfe10f03f4b52ab8c453c16447c3cbf61108221f2c58c446bf8425a
+  checksum: ba6baa7c32e69b38eebb322a8eb1712a117f7f1eaa42e75623c7d6da43f0e61d3ac33fa962c2c58a8b37742f1e0ae9d21f04c9da0dbf34d618a8780055e9e1fa
   languageName: node
   linkType: hard
 
@@ -5697,9 +5697,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^3.0.7":
-  version: 3.0.7
-  resolution: "vite@npm:3.0.7"
+"vite@npm:^3.0.9":
+  version: 3.0.9
+  resolution: "vite@npm:3.0.9"
   dependencies:
     esbuild: ^0.14.47
     fsevents: ~2.3.2
@@ -5725,7 +5725,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 3cdcb68e16433b9addee61c117c379692e4d12d44ee7011da99ed9516b8c37ce76f1bb1728eab0e3a28957c9d2dc839024e1607c2ad03f38089e3be55d7dd456
+  checksum: 6341aa43579ae45f8a383bdc0c5041dea3dff98f14e0a546d6d884a864134b00082246a28d1de8adff0ce0dd92b468c7ade8f972ffe1ed97258671d63e0f16f7
   languageName: node
   linkType: hard
 
@@ -5840,13 +5840,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-template-compiler@npm:^2.7.8":
-  version: 2.7.8
-  resolution: "vue-template-compiler@npm:2.7.8"
+"vue-template-compiler@npm:^2.7.9":
+  version: 2.7.9
+  resolution: "vue-template-compiler@npm:2.7.9"
   dependencies:
     de-indent: ^1.0.2
     he: ^1.2.0
-  checksum: e0886488f46055c6e8f59c57fdcc624d1b241aaa0995977482381124a4bf602142743bb6127cf13fa8b04e4c1070253c7aa9b77abc158cf7ab988b223cddbf24
+  checksum: 4d7aa55f42279b2030a258b08653c3c435abdb9693f2a2db73fe052fd358485805a977c2b9d601889a958ebdd2697ed425af1fbf38e49e4f5a1c3ba37384a9ba
   languageName: node
   linkType: hard
 

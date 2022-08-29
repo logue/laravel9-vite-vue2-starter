@@ -3,9 +3,9 @@
   "private": true,
   "engines": {
     "node": ">=16.17.0",
-    "yarn": ">=1.22.4"
+    "yarn": ">=1.22.10"
   },
-  "packageManager": "yarn@3.2.2",
+  "packageManager": "yarn@3.2.3",
   "scripts": {
     "dev": "vite & php artisan serve",
     "clean": "rimraf ./node_modules/.vite",
@@ -32,15 +32,15 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.184",
-    "@types/node": "^18.7.12",
+    "@types/node": "^18.7.13",
     "@types/ziggy-js": "^1.3.2",
-    "@typescript-eslint/eslint-plugin": "^5.34.0",
-    "@typescript-eslint/parser": "^5.34.0",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
     "@vitejs/plugin-vue2": "^1.1.2",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/tsconfig": "^0.1.3",
     "autoprefixer": "^10.4.8",
-    "eslint": "^8.22.0",
+    "eslint": "^8.23.0",
     "eslint-config-google": "^0.14.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-typescript": "^3.5.0",
@@ -53,7 +53,7 @@
     "eslint-plugin-vuejs-accessibility": "^1.2.0",
     "eslint-plugin-yaml": "^0.5.0",
     "husky": "^8.0.1",
-    "laravel-vite-plugin": "^0.5.4",
+    "laravel-vite-plugin": "^0.6.0",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.16",
     "postcss-html": "^1.5.0",
@@ -67,10 +67,10 @@
     "stylelint-order": "^5.0.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.9",
-    "vite-plugin-checker": "^0.4.9",
+    "vite-plugin-checker": "^0.5.0",
     "vue-eslint-parser": "^9.0.3",
     "vue-template-compiler": "^2.7.10",
-    "vue-tsc": "^0.40.1"
+    "vue-tsc": "^0.40.4"
   },
   "husky": {
     "hooks": {

@@ -78,7 +78,6 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
               'vue2-teleport',
               'deepmerge',
               // '@logue/vue2-helpers',
-              // '@logue/vue2-helpers/vue-router',
               // '@logue/vue2-helpers/vuex',
             ],
             inertia: [

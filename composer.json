@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/composer/composer/main/res/composer-schema.json",
+  "$schema": "https://getcomposer.org/schema.json",
   "name": "laravel/laravel",
   "type": "project",
   "description": "The Laravel Framework.",

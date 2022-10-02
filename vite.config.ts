@@ -6,10 +6,32 @@ import checker from 'vite-plugin-checker';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
+import { fileURLToPath } from 'url';
 
 // https://vitejs.dev/config/
 export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
   const config: UserConfig = {
+    // https://vitejs.dev/config/shared-options.html#base
+    base: './',
+    // Resolver
+    resolve: {
+      // https://vitejs.dev/config/shared-options.html#resolve-alias
+      alias: {
+        // vue @ shortcut fix
+        '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
+        // Inertia fix
+        // https://github.com/vitejs/vite/issues/9395#issuecomment-1196793504
+        '@inertiajs/inertia-vue': fileURLToPath(
+          new URL(
+            './node_modules/@inertiajs/inertia-vue/src/index.js',
+            import.meta.url
+          )
+        ),
+        ziggy: fileURLToPath(
+          new URL('./vendor/tightenco/ziggy/dist/vue', import.meta.url)
+        ),
+      },
+    },
     // https://vitejs.dev/config/#server-options
     server: {
       fs: {
@@ -34,23 +56,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
       }),
       // Vue2
       // https://github.com/vitejs/vite-plugin-vue2
-      vue({
-        template: {
-          transformAssetUrls: {
-            // The Vue plugin will re-write asset URLs, when referenced
-            // in Single File Components, to point to the Laravel web
-            // server. Setting this to `null` allows the Laravel plugin
-            // to instead re-write asset URLs to point to the Vite
-            // server instead.
-            // base: null,
-            // The Vue plugin will parse absolute URLs and treat them
-            // as absolute paths to files on disk. Setting this to
-            // `false` will leave absolute URLs un-touched so they can
-            // reference assets in the public directly as expected.
-            // includeAbsolute: false,
-          },
-        },
-      }),
+      vue(),
       // vite-plugin-checker
       // https://github.com/fi3ework/vite-plugin-checker
       checker({
@@ -61,10 +67,14 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
         },
       }),
     ],
+    optimizeDeps: {
+      include: ['ziggy'],
+    },
     // Build Options
     // https://vitejs.dev/config/#build-options
     build: {
       rollupOptions: {
+        external: 'ziggy',
         output: {
           manualChunks: {
             // Split external library from transpiled code.
@@ -93,8 +103,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
               'vue-inertia-composable',
               'ziggy-js',
             ],
-            axios: ['axios'],
-            lodash: ['lodash'],
+            misc: ['axios', 'lodash'],
           },
           plugins: [
             mode === 'analyze'
@@ -102,7 +111,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
                 // https://github.com/btd/rollup-plugin-visualizer
                 visualizer({
                   open: true,
-                  filename: './stats.html',
+                  filename: './docs/stats.html',
                   gzipSize: true,
                   brotliSize: true,
                 })

@@ -2,7 +2,7 @@ import './bootstrap';
 import '../css/app.css';
 
 import Vue from 'vue';
-import Teleport from 'vue2-teleport';
+import teleport from '@logue/vue2-helpers/teleport';
 import { createInertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -28,7 +28,7 @@ createInertiaApp({
     // Register Inertia
     Vue.use(plugin);
     // Telepot for vue2.
-    Vue.component('Teleport', Teleport);
+    Vue.component('Teleport', teleport);
     // @ts-ignore
     Vue.use(ZiggyVue, Ziggy);
 

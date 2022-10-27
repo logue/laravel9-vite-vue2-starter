@@ -5,8 +5,8 @@ php:
   finder:
     not-name:
       - index.php
-js:
+ts:
   finder:
     not-name:
-      - vite.config.js
+      - vite.config.ts
 css: true

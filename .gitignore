@@ -11,7 +11,8 @@ stats.html
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+/.fleet
+/.idea
 /node_modules
 /public/build
 /public/hot
@@ -38,7 +39,9 @@ stats.html
 resources/js/meta.ts
 .env
 .env.backup
+.env.production
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 auth.json
+

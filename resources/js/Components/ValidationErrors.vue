@@ -10,6 +10,7 @@
 <script lang="ts">
 import { computed, defineComponent, type ComputedRef } from 'vue';
 import { usePage } from 'vue-inertia-composable';
+import type { ErrorBag, Errors } from '@inertiajs/inertia';
 
 export default defineComponent({
   /**
@@ -17,7 +18,7 @@ export default defineComponent({
    */
   setup() {
     /** Error Messages */
-    const errors: ComputedRef<string[]> = computed(
+    const errors: ComputedRef<Errors & ErrorBag> = computed(
       () => usePage().props.errors
     );
 

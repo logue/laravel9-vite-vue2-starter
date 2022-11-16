@@ -19,6 +19,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
       alias: {
         // vue @ shortcut fix
         '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
+        '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
         // Inertia fix
         // https://github.com/vitejs/vite/issues/9395#issuecomment-1196793504
         '@inertiajs/inertia-vue': fileURLToPath(
@@ -61,7 +62,7 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
       // https://github.com/fi3ework/vite-plugin-checker
       checker({
         typescript: true,
-        vueTsc: false,
+        vueTsc: true,
         eslint: {
           lintCommand: 'eslint', // for example, lint .ts & .tsx
         },

@@ -13,7 +13,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // @ts-ignore
         sans: ['Nunito', ...defaultTheme.fontFamily.sans],
       },
     },

@@ -1,19 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig.json",
-  "extends": "@vue/tsconfig/tsconfig.web.json",
-  "compilerOptions": {
-    "newLine": "lf",
-    "noImplicitAny": false,
-    "paths": { "@/*": ["./resources/js/*"] },
-    "types": ["vite/client", "vue"]
-  },
-  "include": [
-    "./resources/**/*.ts",
-    "./resources/**/*.d.ts",
-    "./resources/**/*.tsx",
-    "./resources/**/*.vue"
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.config.json" },
+    { "path": "./tsconfig.app.json" }
   ],
-  "exclude": ["node_modules", "vendor", "public"],
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "vueCompilerOptions": { "target": 2.7 }
+  "compilerOptions": { "newLine": "lf" }
 }

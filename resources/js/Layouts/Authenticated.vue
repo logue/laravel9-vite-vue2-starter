@@ -151,14 +151,16 @@
 
 <script lang="ts">
 import { defineComponent, ref, type Ref } from 'vue';
-import { usePage, route } from 'vue-inertia-composable';
+import { usePage } from 'vue-inertia-composable';
+import route from 'ziggy-js';
+
+import { Link as InertiaLink } from '@inertiajs/inertia-vue';
 
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
 import BreezeDropdown from '@/Components/Dropdown.vue';
 import BreezeDropdownLink from '@/Components/DropdownLink.vue';
 import BreezeNavLink from '@/Components/NavLink.vue';
 import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link as InertiaLink } from '@inertiajs/inertia-vue';
 
 export default defineComponent({
   /** Using Components */

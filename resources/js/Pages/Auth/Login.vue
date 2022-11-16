@@ -64,7 +64,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, type Ref } from 'vue';
-import { useInertia, route } from 'vue-inertia-composable';
+import { useInertia } from 'vue-inertia-composable';
+import route from 'ziggy-js';
+
+import {
+  Head as InertiaHead,
+  Link as InertiaLink,
+} from '@inertiajs/inertia-vue';
 
 import BreezeButton from '@/Components/Button.vue';
 import BreezeCheckbox from '@/Components/Checkbox.vue';
@@ -72,10 +78,6 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import {
-  Head as InertiaHead,
-  Link as InertiaLink,
-} from '@inertiajs/inertia-vue';
 
 export default defineComponent({
   /** Using Components */

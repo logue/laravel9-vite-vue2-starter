@@ -8,6 +8,10 @@ Also, in order to maintain the code quality, [Laravel Pint](https://github.com/l
 
 If you are using an older version, delete node_moduls and yarn.lock and recreate the FE environment just in case.
 
+## Known issue
+
+- [inertia-link](https://inertiajs.com/links) outputs an error on vue-tsc. Run `build-only` when building.
+
 ## See also
 
 - [vite-vue2-ts-starter](https://github.com/logue/vite-vue2-ts-starter)

@@ -46,7 +46,7 @@ export default defineComponent({
       }
     });
 
-    const onInput = (e: InputEvent) =>
+    const onInput = (e: Event) =>
       context.emit('update:modelValue', (e.target as HTMLInputElement).value);
 
     return {

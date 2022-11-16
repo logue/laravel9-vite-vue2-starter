@@ -281,7 +281,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { usePage, route } from 'vue-inertia-composable';
+import { usePage } from 'vue-inertia-composable';
+import route from 'ziggy-js';
 
 import {
   Head as InertiaHead,

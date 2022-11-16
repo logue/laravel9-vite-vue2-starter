@@ -55,7 +55,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, type Ref } from 'vue';
-import { useInertia, route } from 'vue-inertia-composable';
+import { useInertia } from 'vue-inertia-composable';
+import route from 'ziggy-js';
 
 import BreezeButton from '@/Components/Button.vue';
 import BreezeGuestLayout from '@/Layouts/Guest.vue';

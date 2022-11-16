@@ -1,7 +1,7 @@
 <template>
-  <div v-show="message">
+  <div v-show="messages">
     <p class="text-sm text-red-600">
-      {{ message }}
+      {{ messages }}
     </p>
   </div>
 </template>

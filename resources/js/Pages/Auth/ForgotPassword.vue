@@ -1,64 +1,65 @@
 <template>
-  <breeze-guest-layout>
+  <guest-layout>
     <inertia-head title="Forgot Password" />
 
-    <div class="mb-4 text-sm text-gray-600">
+    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
       Forgot your password? No problem. Just let us know your email address and
       we will email you a password reset link that will allow you to choose a
       new one.
     </div>
 
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+    <div
+      v-if="status"
+      class="mb-4 font-medium text-sm text-green-600 dark:text-green-400"
+    >
       {{ status }}
     </div>
 
-    <breeze-validation-errors class="mb-4" />
-
     <form @submit.prevent="submit">
       <div>
-        <breeze-label for="email" value="Email" />
-        <breeze-input
+        <input-label for="email" value="Email" />
+        <text-input
           id="email"
           v-model="form.email"
-          type="email"
+          autocomplete="username"
           class="mt-1 block w-full"
           required
-          autocomplete="username"
+          type="email"
         />
+        <InputError class="mt-2" :message="form.errors.email" />
       </div>
 
       <div class="flex items-center justify-end mt-4">
-        <breeze-button
+        <primary-button
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >
           Email Password Reset Link
-        </breeze-button>
+        </primary-button>
       </div>
     </form>
-  </breeze-guest-layout>
+  </guest-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref } from 'vue';
-import { useInertia } from 'vue-inertia-composable';
-import route from 'ziggy-js';
+import { defineComponent, type SetupContext } from 'vue';
+import { route, useForm } from 'vue-inertia-composable';
 
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
 import { Head as InertiaHead } from '@inertiajs/inertia-vue';
 
 export default defineComponent({
   /** Using Components */
   components: {
-    BreezeButton,
-    BreezeGuestLayout,
-    BreezeInput,
-    BreezeLabel,
-    BreezeValidationErrors,
+    GuestLayout,
+    InputError,
+    InputLabel,
+    PrimaryButton,
+    TextInput,
     InertiaHead,
   },
   /** Props Definition */
@@ -68,19 +69,19 @@ export default defineComponent({
   },
   /**
    * Setup
+   *
+   * @param _props - Props
+   * @param _context - Setup Context
    */
-  setup() {
-    /** Get Inertia instance */
-    const inertia = useInertia();
-
-    /** Form */
-    const form: Ref<{ email: string; processing?: boolean }> = ref({
+  setup(_rops, _context: SetupContext) {
+    /** Inertia Form */
+    const form = useForm({
       email: '',
     });
 
     /** Submit button clicked */
     const submit = () => {
-      inertia.post(route('password.email'), form.value);
+      form.post(route('password.email'));
     };
 
     return {

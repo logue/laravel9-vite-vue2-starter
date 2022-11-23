@@ -1,77 +1,75 @@
 <template>
-  <breeze-guest-layout>
+  <guest-layout>
     <inertia-head title="Confirm Password" />
 
-    <div class="mb-4 text-sm text-gray-600">
+    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
       This is a secure area of the application. Please confirm your password
       before continuing.
     </div>
 
-    <breeze-validation-errors class="mb-4" />
-
     <form @submit.prevent="submit">
       <div>
-        <breeze-label for="password" value="Password" />
-        <breeze-input
+        <input-label for="password" value="Password" />
+        <text-input
           id="password"
           v-model="form.password"
-          type="password"
+          autocomplete="current-password"
           class="mt-1 block w-full"
           required
-          autocomplete="current-password"
+          type="password"
         />
+        <input-error class="mt-2" :message="form.errors.password" />
       </div>
 
       <div class="flex justify-end mt-4">
-        <breeze-button
+        <primary-button
           class="ml-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >
           Confirm
-        </breeze-button>
+        </primary-button>
       </div>
     </form>
-  </breeze-guest-layout>
+  </guest-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref } from 'vue';
-import { useInertia } from 'vue-inertia-composable';
-import route from 'ziggy-js';
-
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import { defineComponent, type SetupContext } from 'vue';
+import { useForm, route } from 'vue-inertia-composable';
 import { Head as InertiaHead } from '@inertiajs/inertia-vue';
+
+import GuestLayout from '@/Layouts/GuestLayout.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
 
 export default defineComponent({
   /** Using Components */
   components: {
-    BreezeButton,
-    BreezeGuestLayout,
-    BreezeInput,
-    BreezeLabel,
-    BreezeValidationErrors,
+    GuestLayout,
+    InputError,
+    InputLabel,
+    PrimaryButton,
+    TextInput,
     InertiaHead,
   },
   /**
    * Setup
+   *
+   * @param _props - Props
+   * @param _context - Setup Context
    */
-  setup() {
-    /** Get Inertia instance */
-    const inertia = useInertia();
-
-    /** Form */
-    const form: Ref<{ password: string; processing?: boolean }> = ref({
+  setup(_props, _context: SetupContext) {
+    /** Get Inertia form instance */
+    const form = useForm({
       password: '',
     });
 
     const submit = () => {
-      inertia.post(route('password.confirm'), form.value, {
-        onFinish: () => (form.value.password = ''),
+      form.post(route('password.confirm'), {
+        onFinish: () => form.reset(),
       });
     };
 

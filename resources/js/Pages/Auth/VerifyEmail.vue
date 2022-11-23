@@ -1,16 +1,16 @@
 <template>
-  <breeze-guest-layout>
+  <guest-layout>
     <inertia-head title="Email Verification" />
 
-    <div class="mb-4 text-sm text-gray-600">
+    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
       Thanks for signing up! Before getting started, could you verify your email
       address by clicking on the link we just emailed to you? If you didn't
       receive the email, we will gladly send you another.
     </div>
 
     <div
-      class="mb-4 font-medium text-sm text-green-600"
       v-if="verificationLinkSent"
+      class="mb-4 font-medium text-sm text-green-600 dark:text-green-400"
     >
       A new verification link has been sent to the email address you provided
       during registration.
@@ -18,52 +18,46 @@
 
     <form @submit.prevent="submit">
       <div class="mt-4 flex items-center justify-between">
-        <breeze-button
+        <primary-button
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >
           Resend Verification Email
-        </breeze-button>
+        </primary-button>
 
         <inertia-link
           :href="route('logout')"
           method="post"
           as="button"
-          class="underline text-sm text-gray-600 hover:text-gray-900"
+          class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
         >
           Log Out
         </inertia-link>
       </div>
     </form>
-  </breeze-guest-layout>
+  </guest-layout>
 </template>
 
 <script lang="ts">
 import {
   computed,
   defineComponent,
-  ref,
-  type Ref,
   type ComputedRef,
+  type SetupContext,
 } from 'vue';
-import { useInertia } from 'vue-inertia-composable';
-import route from 'ziggy-js';
+import { InertiaLink, route, useForm } from 'vue-inertia-composable';
 
-import {
-  Head as InertiaHead,
-  Link as InertiaLink,
-} from '@inertiajs/inertia-vue';
-
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { Head as InertiaHead } from '@inertiajs/inertia-vue';
 
 export default defineComponent({
   /** Using Components */
   components: {
-    BreezeButton,
-    BreezeGuestLayout,
-    InertiaHead,
+    GuestLayout,
+    PrimaryButton,
     InertiaLink,
+    InertiaHead,
   },
   /** Props Definition */
   props: {
@@ -72,14 +66,13 @@ export default defineComponent({
   },
   /**
    * Setup
+   *
    * @param props - Props
+   * @param _context - Setup Context
    */
-  setup(props) {
-    /** Get Inertia instance */
-    const inertia = useInertia();
-
-    /** Form */
-    const form: Ref<{ processing?: boolean }> = ref({});
+  setup(props, _context: SetupContext) {
+    /** Inertia Form */
+    const form = useForm({});
 
     /** Verification email send flag */
     const verificationLinkSent: ComputedRef<boolean> = computed(
@@ -88,14 +81,14 @@ export default defineComponent({
 
     /** Submit button handler */
     const submit = () => {
-      inertia.post(route('verification.send'), form.value);
+      form.post(route('verification.send'));
     };
 
     return {
       form,
-      verificationLinkSent,
-      submit,
       route,
+      submit,
+      verificationLinkSent,
     };
   },
 });

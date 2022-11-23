@@ -1,0 +1,80 @@
+<template>
+  <input
+    :id="id"
+    ref="input"
+    class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+    :value="modelValue"
+    :required="required"
+    :autocomplete="autocomplete"
+    @input="onInput"
+  />
+</template>
+
+<script lang="ts">
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  type Ref,
+  type SetupContext,
+} from 'vue';
+
+export default defineComponent({
+  /** Model Definition */
+  model: {
+    prop: 'modelValue',
+    event: 'update:modelValue',
+  },
+  /** Props */
+  props: {
+    modelValue: {
+      type: String,
+      default: '',
+    },
+    id: {
+      type: String,
+      default: undefined,
+    },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    autocomplete: {
+      type: String,
+      default: undefined,
+    },
+    required: {
+      type: Boolean,
+    },
+  },
+  /** Emits */
+  emits: ['update:modelValue'],
+  /**
+   * Setup
+   *
+   * @param props - Props
+   * @param context - Setup Context
+   */
+  setup(props, context: SetupContext) {
+    const input: Ref<HTMLInputElement | undefined> = ref();
+
+    const focus = () => input.value?.focus();
+
+    const onInput = (e: Event) => {
+      context.emit('update:modelValue', input.value);
+    };
+
+    onMounted(() => {
+      if (input.value?.hasAttribute('autofocus')) {
+        input.value.focus();
+      }
+    });
+
+    return {
+      input,
+      focus,
+      onInput,
+    };
+  },
+});
+</script>

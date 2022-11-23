@@ -1,12 +1,16 @@
-<!-- eslint-disable vuejs-accessibility/click-events-have-key-events-->
 <template>
   <div class="relative">
-    <div @click="open = !open">
+    <div @click="open = !open" @keydown="closeOnEscape">
       <slot name="trigger" />
     </div>
 
     <!-- Full Screen Dropdown Overlay -->
-    <div v-show="open" class="fixed inset-0 z-40" @click="open = false" />
+    <div
+      v-show="open"
+      class="fixed inset-0 z-40"
+      @click="open = false"
+      @keydown="closeOnEscape"
+    />
 
     <transition
       enter-active-class="transition ease-out duration-200"
@@ -18,14 +22,17 @@
     >
       <div
         v-show="open"
-        class="absolute z-50 mt-2 rounded-md shadow-lg"
-        :class="[widthClass, alignmentClasses]"
-        style="display: none"
+        :class="`absolute z-50 mt-2 rounded-md shadow-lg ${[
+          widthClass,
+          alignmentClasses,
+        ].join(' ')}`"
         @click="open = false"
+        @keydown="closeOnEscape"
       >
         <div
-          class="rounded-md ring-1 ring-black ring-opacity-5"
-          :class="contentClasses"
+          :class="`rounded-md ring-1 ring-black ring-opacity-5 ${contentClasses.join(
+            ' '
+          )}`"
         >
           <slot name="content" />
         </div>
@@ -42,37 +49,46 @@ import {
   onUnmounted,
   ref,
   type ComputedRef,
+  type PropType,
   type Ref,
+  type SetupContext,
 } from 'vue';
 
 export default defineComponent({
   /** Props Definition */
   props: {
-    alignment: { type: String, default: 'right' },
-    width: { type: String, default: '48' },
+    align: {
+      type: String,
+      default: 'right',
+    },
+    width: {
+      type: Number,
+      default: 48,
+    },
     contentClasses: {
-      type: Array,
-      default: () => ['py-1', 'bg-white'],
+      type: Array as PropType<string[]>,
+      default: () => ['py-1', 'bg-white dark:bg-gray-700'],
     },
   },
   /**
    * Setup
    *
    * @param props - Props
+   * @param _context - Setup Context
    */
-  setup(props) {
+  setup(props, _context: SetupContext) {
     const open: Ref<boolean> = ref(false);
 
     const widthClass: ComputedRef<string | undefined> = computed(() => {
       return {
-        '48': 'w-48',
+        48: 'w-48',
       }[props.width.toString()];
     });
 
     const alignmentClasses: ComputedRef<string> = computed(() => {
-      if (props.alignment === 'left') {
+      if (props.align === 'left') {
         return 'origin-top-left left-0';
-      } else if (props.alignment === 'right') {
+      } else if (props.align === 'right') {
         return 'origin-top-right right-0';
       } else {
         return 'origin-top';

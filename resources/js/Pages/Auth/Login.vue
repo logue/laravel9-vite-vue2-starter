@@ -1,8 +1,6 @@
 <template>
-  <breeze-guest-layout>
+  <guest-layout>
     <inertia-head title="Log in" />
-
-    <breeze-validation-errors class="mb-4" />
 
     <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
       {{ status }}
@@ -10,8 +8,8 @@
 
     <form @submit.prevent="submit">
       <div>
-        <breeze-label for="email" value="Email" />
-        <breeze-input
+        <input-label for="email" value="Email" />
+        <text-input
           id="email"
           v-model="form.email"
           type="email"
@@ -19,11 +17,12 @@
           required
           autocomplete="username"
         />
+        <input-error class="mt-2" :message="form.errors.email" />
       </div>
 
       <div class="mt-4">
-        <breeze-label for="password" value="Password" />
-        <breeze-input
+        <input-label for="password" value="Password" />
+        <text-input
           id="password"
           v-model="form.password"
           type="password"
@@ -31,13 +30,17 @@
           required
           autocomplete="current-password"
         />
+        <InputError class="mt-2" :message="form.errors.password" />
       </div>
 
       <div class="block mt-4">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label class="flex items-center">
-          <breeze-checkbox v-model="form.remember" name="remember" />
-          <span class="ml-2 text-sm text-gray-600">Remember me</span>
+          <!-- eslint-disable-next-line vue/no-v-model-argument -->
+          <checkbox v-model:checked="form.remember" name="remember" />
+          <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">
+            Remember me
+          </span>
         </label>
       </div>
 
@@ -45,91 +48,75 @@
         <inertia-link
           v-if="canResetPassword"
           :href="route('password.request')"
-          class="underline text-sm text-gray-600 hover:text-gray-900"
+          class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
         >
           Forgot your password?
         </inertia-link>
 
-        <breeze-button
+        <primary-button
           class="ml-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >
           Log in
-        </breeze-button>
+        </primary-button>
       </div>
     </form>
-  </breeze-guest-layout>
+  </guest-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref } from 'vue';
-import { useInertia } from 'vue-inertia-composable';
-import route from 'ziggy-js';
+import { defineComponent, type SetupContext } from 'vue';
+import { InertiaLink, route, useForm } from 'vue-inertia-composable';
 
-import {
-  Head as InertiaHead,
-  Link as InertiaLink,
-} from '@inertiajs/inertia-vue';
-
-import BreezeButton from '@/Components/Button.vue';
-import BreezeCheckbox from '@/Components/Checkbox.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import Checkbox from '@/Components/Checkbox.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import { Head as InertiaHead } from '@inertiajs/inertia-vue';
 
 export default defineComponent({
   /** Using Components */
   components: {
-    BreezeButton,
-    BreezeCheckbox,
-    BreezeGuestLayout,
-    BreezeInput,
-    BreezeLabel,
-    BreezeValidationErrors,
+    Checkbox,
+    GuestLayout,
+    InputError,
+    InputLabel,
+    PrimaryButton,
+    TextInput,
     InertiaHead,
     InertiaLink,
   },
   /** Props Definition */
   props: {
-    /** Reset password flag */
-    canResetPassword: { type: Boolean, default: false },
-    /** Status message */
+    canResetPassword: {
+      type: Boolean,
+      default: false,
+    },
     status: { type: String, default: undefined },
   },
   /**
    * Setup
+   *
+   * @param _props - Props
+   * @param _context - Setup Context
    */
-  setup() {
-    /** Get Inertia instance */
-    const inertia = useInertia();
-
-    /** Form value */
-    const form: Ref<{
-      email: string;
-      password: string;
-      remember: boolean;
-      processing?: boolean;
-    }> = ref({
+  setup(_props, _context: SetupContext) {
+    const form = useForm({
       email: '',
       password: '',
       remember: false,
     });
 
-    /** Form submit handler */
     const submit = () => {
-      console.log(form.value);
-      inertia.post(route('login'), form.value, {
-        onFinish: () => (form.value.password = ''),
+      form.post(route('login'), {
+        onFinish: () => form.reset('password'),
       });
     };
 
-    return {
-      form,
-      submit,
-      route,
-    };
+    return { form, submit, route };
   },
 });
 </script>

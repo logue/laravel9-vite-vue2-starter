@@ -1,13 +1,11 @@
 <template>
-  <breeze-guest-layout>
+  <guest-layout>
     <inertia-head title="Register" />
-
-    <breeze-validation-errors class="mb-4" />
 
     <form @submit.prevent="submit">
       <div>
-        <breeze-label for="name" value="Name" />
-        <breeze-input
+        <input-label for="name" value="Name" />
+        <text-input
           id="name"
           v-model="form.name"
           type="text"
@@ -15,11 +13,12 @@
           required
           autocomplete="name"
         />
+        <input-error class="mt-2" :message="form.errors.name" />
       </div>
 
       <div class="mt-4">
-        <breeze-label for="email" value="Email" />
-        <breeze-input
+        <input-label for="email" value="Email" />
+        <text-input
           id="email"
           v-model="form.email"
           type="email"
@@ -27,11 +26,12 @@
           required
           autocomplete="username"
         />
+        <input-error class="mt-2" :message="form.errors.email" />
       </div>
 
       <div class="mt-4">
-        <breeze-label for="password" value="Password" />
-        <breeze-input
+        <input-label for="password" value="Password" />
+        <text-input
           id="password"
           v-model="form.password"
           type="password"
@@ -39,11 +39,12 @@
           required
           autocomplete="new-password"
         />
+        <input-error class="mt-2" :message="form.errors.password" />
       </div>
 
       <div class="mt-4">
-        <breeze-label for="password_confirmation" value="Confirm Password" />
-        <breeze-input
+        <input-label for="password_confirmation" value="Confirm Password" />
+        <text-input
           id="password_confirmation"
           v-model="form.password_confirmation"
           type="password"
@@ -51,74 +52,62 @@
           required
           autocomplete="new-password"
         />
+        <input-error
+          class="mt-2"
+          :message="form.errors.password_confirmation"
+        />
       </div>
 
       <div class="flex items-center justify-end mt-4">
         <inertia-link
           :href="route('login')"
-          class="underline text-sm text-gray-600 hover:text-gray-900"
+          class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
         >
           Already registered?
         </inertia-link>
 
-        <breeze-button
-          :class="`ml-4 ${{ 'opacity-25': form.processing }}`"
+        <primary-button
+          class="ml-4"
+          :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >
           Register
-        </breeze-button>
+        </primary-button>
       </div>
     </form>
-  </breeze-guest-layout>
+  </guest-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref } from 'vue';
-import { useInertia } from 'vue-inertia-composable';
-import route from 'ziggy-js';
+import { defineComponent, type SetupContext } from 'vue';
+import { useForm, InertiaLink, route } from 'vue-inertia-composable';
 
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import {
-  Head as InertiaHead,
-  Link as InertiaLink,
-} from '@inertiajs/inertia-vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import { Head as InertiaHead } from '@inertiajs/inertia-vue';
 
 export default defineComponent({
   /** Using Components */
   components: {
-    BreezeButton,
-    BreezeGuestLayout,
-    BreezeInput,
-    BreezeLabel,
-    BreezeValidationErrors,
-    InertiaHead,
+    GuestLayout,
+    InputError,
+    InputLabel,
+    PrimaryButton,
+    TextInput,
     InertiaLink,
-  },
-  /** Props Definition */
-  props: {
-    /** Status Message */
-    status: { type: String, default: undefined },
+    InertiaHead,
   },
   /**
    * Setup
+   *
+   * @param _props - Props
+   * @param _context - Setup Context
    */
-  setup() {
-    /** Get Inertia instance */
-    const inertia = useInertia();
-
-    /** Form value */
-    const form: Ref<{
-      name: string;
-      email: string;
-      password: string;
-      password_confirmation: string;
-      terms: boolean;
-      processing?: boolean;
-    }> = ref({
+  setup(_props, _context: SetupContext) {
+    const form = useForm({
       name: '',
       email: '',
       password: '',
@@ -126,22 +115,13 @@ export default defineComponent({
       terms: false,
     });
 
-    /** Form submit handler */
     const submit = () => {
-      // console.log(form.value);
-      inertia.post(route('register'), form.value, {
-        onFinish: () => {
-          form.value.password = '';
-          form.value.password_confirmation = '';
-        },
+      form.post(route('register'), {
+        onFinish: () => form.reset('password', 'password_confirmation'),
       });
     };
 
-    return {
-      form,
-      submit,
-      route,
-    };
+    return { form, submit, route };
   },
 });
 </script>

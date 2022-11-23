@@ -1,7 +1,7 @@
 <template>
-  <div v-show="messages">
-    <p class="text-sm text-red-600">
-      {{ messages }}
+  <div v-show="message">
+    <p class="text-sm text-red-600 dark:text-red-400">
+      {{ message }}
     </p>
   </div>
 </template>
@@ -12,8 +12,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   /** Props Definition */
   props: {
-    /** Message */
-    messages: { type: String, default: undefined },
+    message: { type: String, default: undefined },
   },
 });
 </script>

@@ -10,7 +10,7 @@
       </p>
     </header>
 
-    <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
+    <form class="mt-6 space-y-6" @submit.prevent="updatePassword">
       <div>
         <input-label for="current_password" value="Current Password" />
 
@@ -79,12 +79,19 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, type SetupContext } from 'vue';
+import { ref, defineComponent, type Ref, type SetupContext } from 'vue';
 import { route, useForm } from 'vue-inertia-composable';
+import type { InertiaForm } from '@inertiajs/inertia-vue';
 
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
+
+type TForm = {
+  current_password: string;
+  password: string;
+  password_confirmation: string;
+};
 
 export default defineComponent({
   /** Using Components */
@@ -100,10 +107,10 @@ export default defineComponent({
    * @param _context - Setup Context
    */
   setup(_props, _context: SetupContext) {
-    const passwordInput = ref();
-    const currentPasswordInput = ref();
+    const passwordInput: Ref<typeof TextInput | undefined> = ref();
+    const currentPasswordInput: Ref<typeof TextInput | undefined> = ref();
 
-    const form = useForm({
+    const form: InertiaForm<TForm | undefined> = useForm({
       current_password: '',
       password: '',
       password_confirmation: '',
@@ -116,11 +123,11 @@ export default defineComponent({
         onError: () => {
           if (form.errors.password) {
             form.reset('password', 'password_confirmation');
-            passwordInput.value.focus();
+            passwordInput.value?.focus();
           }
           if (form.errors.current_password) {
             form.reset('current_password');
-            currentPasswordInput.value.focus();
+            currentPasswordInput.value?.focus();
           }
         },
       });

@@ -66,7 +66,14 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head as InertiaHead } from '@inertiajs/inertia-vue';
+import { Head as InertiaHead, type InertiaForm } from '@inertiajs/inertia-vue';
+
+type TForm = {
+  token: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+};
 
 export default defineComponent({
   /** Using Components */
@@ -93,7 +100,7 @@ export default defineComponent({
    */
   setup(props, _context: SetupContext) {
     /** Inertia Form */
-    const form = useForm({
+    const form: InertiaForm<TForm | undefined> = useForm({
       token: props.token,
       email: props.email,
       password: '',

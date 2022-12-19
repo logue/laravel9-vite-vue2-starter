@@ -23,7 +23,6 @@
           type="text"
           class="mt-1 block w-full"
           required
-          autofocus
           autocomplete="name"
         />
 
@@ -95,6 +94,13 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
+import type { InertiaForm } from '@inertiajs/inertia-vue';
+
+type TForm = {
+  name: string;
+  email: string;
+};
+
 export default defineComponent({
   /** Using Components */
   components: {
@@ -124,7 +130,7 @@ export default defineComponent({
   setup(_props, _context: SetupContext) {
     const user = usePage().props.value.auth.user;
 
-    const form = useForm({
+    const form: InertiaForm<TForm | undefined> = useForm({
       name: user.name,
       email: user.email,
     });

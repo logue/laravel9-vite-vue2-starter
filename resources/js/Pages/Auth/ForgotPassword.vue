@@ -50,7 +50,11 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head as InertiaHead } from '@inertiajs/inertia-vue';
+import { Head as InertiaHead, type InertiaForm } from '@inertiajs/inertia-vue';
+
+type TForm = {
+  email: string;
+};
 
 export default defineComponent({
   /** Using Components */
@@ -75,7 +79,7 @@ export default defineComponent({
    */
   setup(_rops, _context: SetupContext) {
     /** Inertia Form */
-    const form = useForm({
+    const form: InertiaForm<TForm | undefined> = useForm({
       email: '',
     });
 

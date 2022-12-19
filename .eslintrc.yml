@@ -59,6 +59,8 @@ settings:
     alias:
       map:
         - ['@', './resources/js']
+        - ['~', './node_modules']
+        - ['ziggy-vue', './vendor/tightenco/ziggy/dist/vue.m.js']
       extensions:
         - .js
         - .ts

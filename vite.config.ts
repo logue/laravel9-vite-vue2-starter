@@ -32,8 +32,8 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
             import.meta.url
           )
         ),
-        ziggy: fileURLToPath(
-          new URL('./vendor/tightenco/ziggy/dist/vue', import.meta.url)
+        'ziggy-vue': fileURLToPath(
+          new URL('./vendor/tightenco/ziggy/dist/vue.m', import.meta.url)
         ),
       },
     },
@@ -61,7 +61,14 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
       }),
       // Vue2
       // https://github.com/vitejs/vite-plugin-vue2
-      vue(),
+      vue(/* {
+        template: {
+          transformAssetUrls: {
+            base: null,
+            includeAbsolute: false,
+          },
+        },
+      } */),
       // vite-plugin-checker
       // https://github.com/fi3ework/vite-plugin-checker
       checker({

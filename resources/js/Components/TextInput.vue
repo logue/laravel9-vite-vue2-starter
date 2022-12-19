@@ -52,16 +52,18 @@ export default defineComponent({
   /**
    * Setup
    *
-   * @param props - Props
+   * @param _props - Props
    * @param context - Setup Context
    */
-  setup(props, context: SetupContext) {
+  setup(_props, context: SetupContext) {
     const input: Ref<HTMLInputElement | undefined> = ref();
 
     const focus = () => input.value?.focus();
 
-    const onInput = (e: Event) => {
-      context.emit('update:modelValue', input.value);
+    const onInput = () => {
+      if (input.value) {
+        context.emit('update:modelValue', input.value.value);
+      }
     };
 
     onMounted(() => {

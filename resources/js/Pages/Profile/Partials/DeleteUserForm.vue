@@ -75,6 +75,11 @@ import InputLabel from '@/Components/InputLabel.vue';
 import Modal from '@/Components/Modal.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import type { InertiaForm } from '@inertiajs/inertia-vue';
+
+type TForm = {
+  password: string;
+};
 
 export default defineComponent({
   /** Using Components */
@@ -93,24 +98,24 @@ export default defineComponent({
    * @param _context - Setup Context
    */
   setup(_props, _context: SetupContext) {
-    const confirmingUserDeletion: Ref = ref(false);
-    const passwordInput: Ref = ref();
+    const confirmingUserDeletion: Ref<boolean> = ref(false);
+    const passwordInput: Ref<typeof TextInput | undefined> = ref();
 
-    const form = useForm({
+    const form: InertiaForm<TForm | undefined> = useForm({
       password: '',
     });
 
     const confirmUserDeletion = () => {
       confirmingUserDeletion.value = true;
 
-      nextTick(() => passwordInput.value.focus());
+      nextTick(() => passwordInput.value?.focus());
     };
 
     const deleteUser = () => {
       form.delete(route('profile.destroy'), {
         preserveScroll: true,
         onSuccess: () => closeModal(),
-        onError: () => passwordInput.value.focus(),
+        onError: () => passwordInput.value?.focus(),
         onFinish: () => form.reset(),
       });
     };

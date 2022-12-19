@@ -90,12 +90,11 @@ export default defineComponent({
         return 'origin-top-left left-0';
       } else if (props.align === 'right') {
         return 'origin-top-right right-0';
-      } else {
-        return 'origin-top';
       }
+      return 'origin-top';
     });
 
-    const closeOnEscape = e => {
+    const closeOnEscape = (e: KeyboardEvent) => {
       if (open.value && e.key === 'Escape') {
         open.value = false;
       }

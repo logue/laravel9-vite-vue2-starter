@@ -125,8 +125,8 @@ export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
                 visualizer({
                   open: true,
                   filename: './docs/stats.html',
-                  gzipSize: true,
-                  brotliSize: true,
+                  // gzipSize: true,
+                  // brotliSize: true,
                 })
               : undefined,
             /*

@@ -4,7 +4,8 @@
     "esbenp.prettier-vscode",
     "stylelint.vscode-stylelint",
     "Vue.volar",
-    "Vue.vscode-typescript-vue-plugin"
+    "Vue.vscode-typescript-vue-plugin",
+    "msamgan.laravel-pint-vscode"
   ],
   "unwantedRecommendations": [
     "octref.vetur"

@@ -13,151 +13,146 @@ import os from 'node:os';
  *
  * @see {@link https://vitejs.dev/config/}
  */
-export default defineConfig(async ({ command, mode }): Promise<UserConfig> => {
-  const config: UserConfig = {
-    // https://vitejs.dev/config/shared-options.html#base
-    base: './',
-    // Resolver
-    resolve: {
-      // https://vitejs.dev/config/shared-options.html#resolve-alias
-      alias: {
-        // vue @ shortcut fix
-        '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
-        '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
-        // Inertia fix
-        // https://github.com/vitejs/vite/issues/9395#issuecomment-1196793504
-        '@inertiajs/inertia-vue': fileURLToPath(
-          new URL(
-            './node_modules/@inertiajs/inertia-vue/src/index.js',
-            import.meta.url
-          )
-        ),
-        'ziggy-vue': fileURLToPath(
-          new URL('./vendor/tightenco/ziggy/dist/vue.m', import.meta.url)
-        ),
-      },
-    },
-    // https://vitejs.dev/config/server-options.html
-    server: {
-      fs: {
-        // Allow serving files from one level up to the project root
-        allow: ['..'],
-      },
-      host: process.env.LARAVEL_SAIL
-        ? Object.values(os.networkInterfaces())
-            .flat()
-            .find(info => info?.internal === false)?.address
-        : undefined,
-      hmr: {
-        host: 'localhost',
-      },
-    },
-    plugins: [
-      // Laravel Vite
-      // https://laravel.com/docs/9.x/vite
-      laravel({
-        input: ['resources/css/app.css', 'resources/js/app.ts'],
-        refresh: true,
-      }),
-      // Vue2
-      // https://github.com/vitejs/vite-plugin-vue2
-      vue(/* {
-        template: {
-          transformAssetUrls: {
-            base: null,
-            includeAbsolute: false,
+export default defineConfig(
+  async ({ command, mode, ssrBuild }): Promise<UserConfig> => {
+    const config: UserConfig = {
+      // https://vitejs.dev/config/shared-options.html#base
+      base: './',
+      plugins: [
+        // Laravel Vite
+        // https://laravel.com/docs/9.x/vite
+        laravel({
+          input: ['resources/css/app.css', 'resources/js/app.ts'],
+          ssr: 'resources/js/ssr.ts',
+          refresh: true,
+        }),
+        // Vue2
+        // https://github.com/vitejs/vite-plugin-vue2
+        vue({
+          template: {
+            transformAssetUrls: {
+              // base: null,
+              // includeAbsolute: false,
+            },
           },
-        },
-      } */),
-      // vite-plugin-checker
-      // https://github.com/fi3ework/vite-plugin-checker
-      checker({
-        typescript: true,
-        vueTsc: true,
-        eslint: {
-          lintCommand: 'eslint', // for example, lint .ts & .tsx
+        }),
+        // vite-plugin-checker
+        // https://github.com/fi3ework/vite-plugin-checker
+        checker({
+          typescript: true,
+          vueTsc: true,
+          eslint: {
+            lintCommand: 'eslint', // for example, lint .ts & .tsx
+          },
+        }),
+        /*
+      // if you use Code encryption by rollup-plugin-obfuscator
+      // https://github.com/ghostdevv/rollup-obfuscator
+      obfuscator({
+        globalOptions: {
+          debugProtection: true,
         },
       }),
-    ],
-    optimizeDeps: {
-      include: ['ziggy'],
-    },
-    // Build Options
-    // https://vitejs.dev/config/#build-options
-    build: {
-      rollupOptions: {
-        external: 'ziggy',
-        output: {
-          manualChunks: {
-            // Split external library from transpiled code.
-            vue: [
-              'vue',
-              // 'vue-class-component',
-              // 'vue-property-decorator',
-              // 'vue-router',
-              // 'vuex',
-              // 'vuex-persist',
-              'deepmerge',
-              // '@logue/vue2-helpers',
-              // '@logue/vue2-helpers/vuex',
-              '@logue/vue2-helpers/teleport',
-            ],
-            inertia: [
-              '@inertiajs/inertia-vue/dist/index.js',
-              '@inertiajs/inertia-vue/src',
-              '@inertiajs/inertia',
-              '@inertiajs/progress',
-              'get-intrinsic',
-              'laravel-vite-plugin/inertia-helpers/index.js',
-              'nprogress',
-              'object-inspect',
-              'qs',
-              'vendor/tightenco/ziggy/dist/vue.m.js',
-              'vue-inertia-composable',
-              'ziggy-js',
-            ],
-            misc: ['axios', 'lodash'],
-          },
-          plugins: [
-            mode === 'analyze'
-              ? // rollup-plugin-visualizer
-                // https://github.com/btd/rollup-plugin-visualizer
-                visualizer({
-                  open: true,
-                  filename: './docs/stats.html',
-                  // gzipSize: true,
-                  // brotliSize: true,
-                })
-              : undefined,
-            /*
-            // if you use Code encryption by rollup-plugin-obfuscator
-            // https://github.com/getkey/rollup-plugin-obfuscator
-            obfuscator({
-              globalOptions: {
-                debugProtection: true,
+      */
+      ],
+      // Resolver
+      resolve: {
+        // https://vitejs.dev/config/shared-options.html#resolve-alias
+        alias: {
+          // vue @ shortcut fix
+          '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
+          '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
+          'ziggy-vue': fileURLToPath(
+            new URL('./vendor/tightenco/ziggy/dist/vue', import.meta.url)
+          ),
+        },
+        extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
+      },
+      // https://vitejs.dev/config/server-options.html
+      server: {
+        fs: {
+          // Allow serving files from one level up to the project root
+          allow: ['..'],
+        },
+        host: process.env.LARAVEL_SAIL
+          ? Object.values(os.networkInterfaces())
+              .flat()
+              .find(info => info?.internal === false)?.address
+          : undefined,
+        hmr: {
+          host: 'localhost',
+        },
+      },
+      optimizeDeps: {
+        include: ['ziggy'],
+      },
+      // Build Options
+      // https://vitejs.dev/config/#build-options
+      build: {
+        rollupOptions: ssrBuild
+          ? {}
+          : {
+              external: 'ziggy',
+              output: {
+                manualChunks: {
+                  // Split external library from transpiled code.
+                  vue: [
+                    'vue',
+                    // 'vue-router',
+                    // 'vuex',
+                    // 'vuex-persist',
+                    'deepmerge',
+                    // '@logue/vue2-helpers',
+                    // '@logue/vue2-helpers/vuex',
+                    '@logue/vue2-helpers/teleport',
+                  ],
+                  inertia: [
+                    '@inertiajs/inertia',
+                    '@inertiajs/vue2',
+                    'axios',
+                    'get-intrinsic',
+                    'laravel-vite-plugin/inertia-helpers/index.js',
+                    'nprogress',
+                    'object-inspect',
+                    'qs',
+                    'vendor/tightenco/ziggy/dist/vue.m.js',
+                    'vue-inertia-composable',
+                    'ziggy-js',
+                  ],
+                  lodash: ['lodash'],
+                },
+                plugins: [
+                  mode === 'analyze'
+                    ? // rollup-plugin-visualizer
+                      // https://github.com/btd/rollup-plugin-visualizer
+                      visualizer({
+                        open: true,
+                        filename: './docs/stats.html',
+                        // gzipSize: true,
+                        // brotliSize: true,
+                      })
+                    : undefined,
+                ],
               },
-            }),
-            */
-          ],
-        },
+            },
+        target: 'esnext',
+        minify: 'esbuild',
       },
-      target: 'esnext',
-      minify: 'esbuild',
-    },
-    esbuild: {
-      // Drop console when production build.
-      drop: command === 'serve' ? [] : ['console'],
-    },
-  };
+      esbuild: {
+        // Drop console when production build.
+        drop: command === 'serve' ? [] : ['console'],
+      },
+    };
 
-  // Write meta data.
-  fs.writeFileSync(
-    fileURLToPath(new URL('resources/js/meta.ts', import.meta.url)),
-    `// This file is auto-generated by the build system.
+    // Write meta data.
+    fs.writeFileSync(
+      fileURLToPath(new URL('resources/js/meta.ts', import.meta.url)),
+      `// This file is auto-generated by the build system.
 export default {
   date: '${new Date().toISOString()}',
 };`
-  );
+    );
 
-  return config;
-});
+    return config;
+  }
+);

@@ -275,16 +275,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@inertiajs/inertia-vue@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "@inertiajs/inertia-vue@npm:0.8.0"
+"@inertiajs/core@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@inertiajs/core@npm:1.0.0"
   dependencies:
-    lodash.clonedeep: ^4.5.0
-    lodash.isequal: ^4.5.0
-  peerDependencies:
-    "@inertiajs/inertia": ^0.11.0
-    vue: ^2.6.0
-  checksum: 7791978765e0671da0b159e77b9e6165ebff7ea733082d4153c97a18a2252a30786b163c39e679c311bccad784cca6a15690790458829d1d18955c489a1423b1
+    axios: ^1.2.0
+    deepmerge: ^4.0.0
+    nprogress: ^0.2.0
+    qs: ^6.9.0
+  checksum: 8f38d92cf80c6635baea9bfa3170c4da4ab35c29fdc73f92a9ecb97a41ca04abcf637890c7c032b17989ab2382d1fc709c7a240ff1fb224085628724caaa005f
   languageName: node
   linkType: hard
 
@@ -299,14 +298,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@inertiajs/progress@npm:^0.2.7":
-  version: 0.2.7
-  resolution: "@inertiajs/progress@npm:0.2.7"
+"@inertiajs/vue2@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@inertiajs/vue2@npm:1.0.0"
   dependencies:
-    nprogress: ^0.2.0
+    "@inertiajs/core": 1.0.0
+    lodash.clonedeep: ^4.5.0
+    lodash.isequal: ^4.5.0
   peerDependencies:
-    "@inertiajs/inertia": ^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0
-  checksum: 8c89d506b096000e5b621e3d3465fa7d07855ec45e275d9475a8f47b0431478439a838a860927c764e9d5d5600bd7f9f3bba4ccea2ef5f739d7d7f25caa96ca1
+    vue: ^2.6.0
+  checksum: 758ae017480562f2eb5b99eee8499579541bc862e5f67efe8f0e9f85ed8c7d2aae0c4e517096c110bb1b522ae0552f1a8b80b21cd09dee3798d63ad010594b3d
   languageName: node
   linkType: hard
 
@@ -1124,6 +1125,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^1.2.0":
+  version: 1.2.3
+  resolution: "axios@npm:1.2.3"
+  dependencies:
+    follow-redirects: ^1.15.0
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: 52802a1e317e8a6fd2c014aa06a6978ea8381142c98e91f2be5e9e213b77b541451e588e17a3d6db2d6e76faea82911239ca4981d7af959d67fb66018dab3ac9
+  languageName: node
+  linkType: hard
+
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -1287,7 +1299,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.1":
+"chalk@npm:^4.0.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -3026,6 +3038,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hash-sum@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "hash-sum@npm:2.0.0"
+  checksum: efeeacf09ecbd467202865403c3a1991fa15d4f4903c1148ecbe13223fdbf9ec6d7dc661e17e5ce6e776cd70d67b6ee4c82e0171318962435be45c1155175f3f
+  languageName: node
+  linkType: hard
+
 "he@npm:^1.2.0":
   version: 1.2.0
   resolution: "he@npm:1.2.0"
@@ -3811,6 +3830,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash._reinterpolate@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "lodash._reinterpolate@npm:3.0.0"
+  checksum: 06d2d5f33169604fa5e9f27b6067ed9fb85d51a84202a656901e5ffb63b426781a601508466f039c720af111b0c685d12f1a5c14ff8df5d5f27e491e562784b2
+  languageName: node
+  linkType: hard
+
 "lodash.clonedeep@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.clonedeep@npm:4.5.0"
@@ -3846,10 +3872,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.template@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.template@npm:4.5.0"
+  dependencies:
+    lodash._reinterpolate: ^3.0.0
+    lodash.templatesettings: ^4.0.0
+  checksum: ca64e5f07b6646c9d3dbc0fe3aaa995cb227c4918abd1cef7a9024cd9c924f2fa389a0ec4296aa6634667e029bc81d4bbdb8efbfde11df76d66085e6c529b450
+  languageName: node
+  linkType: hard
+
+"lodash.templatesettings@npm:^4.0.0":
+  version: 4.2.0
+  resolution: "lodash.templatesettings@npm:4.2.0"
+  dependencies:
+    lodash._reinterpolate: ^3.0.0
+  checksum: 863e025478b092997e11a04e9d9e735875eeff1ffcd6c61742aa8272e3c2cddc89ce795eb9726c4e74cef5991f722897ff37df7738a125895f23fc7d12a7bb59
+  languageName: node
+  linkType: hard
+
 "lodash.truncate@npm:^4.4.2":
   version: 4.4.2
   resolution: "lodash.truncate@npm:4.4.2"
   checksum: b463d8a382cfb5f0e71c504dcb6f807a7bd379ff1ea216669aa42c52fc28c54e404bfbd96791aa09e6df0de2c1d7b8f1b7f4b1a61f324d38fe98bc535aeee4f5
+  languageName: node
+  linkType: hard
+
+"lodash.uniq@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.uniq@npm:4.5.0"
+  checksum: a4779b57a8d0f3c441af13d9afe7ecff22dd1b8ce1129849f71d9bbc8e8ee4e46dfb4b7c28f7ad3d67481edd6e51126e4e2a6ee276e25906d10f7140187c392d
   languageName: node
   linkType: hard
 
@@ -4975,6 +5027,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"randombytes@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "randombytes@npm:2.1.0"
+  dependencies:
+    safe-buffer: ^5.1.0
+  checksum: d779499376bd4cbb435ef3ab9a957006c8682f343f14089ed5f27764e4645114196e75b7f6abf1cbd84fd247c0cb0651698444df8c9bf30e62120fbbc52269d6
+  languageName: node
+  linkType: hard
+
 "read-cache@npm:^1.0.0":
   version: 1.0.0
   resolution: "read-cache@npm:1.0.0"
@@ -5106,7 +5167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.22.1":
+"resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.22.0, resolve@npm:^1.22.1":
   version: 1.22.1
   resolution: "resolve@npm:1.22.1"
   dependencies:
@@ -5129,7 +5190,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
   version: 1.22.1
   resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"
   dependencies:
@@ -5241,8 +5302,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@inertiajs/inertia": ^0.11.1
-    "@inertiajs/inertia-vue": ^0.8.0
-    "@inertiajs/progress": ^0.2.7
+    "@inertiajs/vue2": ^1.0.0
     "@logue/vue2-helpers": ^2.1.1
     "@tailwindcss/forms": ^0.5.3
     "@types/lodash": ^4.14.191
@@ -5287,7 +5347,8 @@ __metadata:
     vite-plugin-checker: ^0.5.3
     vue: ^2.7.14
     vue-eslint-parser: ^9.1.0
-    vue-inertia-composable: ^0.3.4
+    vue-inertia-composable: ^0.4.0
+    vue-server-renderer: ^2.7.14
     vue-tsc: ^1.0.24
     ziggy-js: ^1.5.0
   languageName: unknown
@@ -5311,7 +5372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"safe-buffer@npm:~5.2.0":
+"safe-buffer@npm:^5.1.0, safe-buffer@npm:~5.2.0":
   version: 5.2.1
   resolution: "safe-buffer@npm:5.2.1"
   checksum: b99c4b41fdd67a6aaf280fcd05e9ffb0813654894223afb78a31f14a19ad220bba8aba1cb14eddce1fcfb037155fe6de4e861784eb434f7d11ed58d1e70dd491
@@ -5373,6 +5434,15 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: ba9c7cbbf2b7884696523450a61fee1a09930d888b7a8d7579025ad93d459b2d1949ee5bbfeb188b2be5f4ac163544c5e98491ad6152df34154feebc2cc337c1
+  languageName: node
+  linkType: hard
+
+"serialize-javascript@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "serialize-javascript@npm:6.0.1"
+  dependencies:
+    randombytes: ^2.1.0
+  checksum: 3c4f4cb61d0893b988415bdb67243637333f3f574e9e9cc9a006a2ced0b390b0b3b44aef8d51c951272a9002ec50885eefdc0298891bc27eb2fe7510ea87dc4f
   languageName: node
   linkType: hard
 
@@ -5518,6 +5588,13 @@ __metadata:
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
   checksum: c049a7fc4deb9a7e9b481ae3d424cc793cb4845daa690bc5a05d428bf41bf231ced49b4cf0c9e77f9d42fdb3d20d6187619fc586605f5eabe995a316da8d377c
+  languageName: node
+  linkType: hard
+
+"source-map@npm:0.5.6":
+  version: 0.5.6
+  resolution: "source-map@npm:0.5.6"
+  checksum: 390b3f5165c9631a74fb6fb55ba61e62a7f9b7d4026ae0e2bfc2899c241d71c1bccb8731c496dc7f7cb79a5f523406eb03d8c5bebe8448ee3fc38168e2d209c8
   languageName: node
   linkType: hard
 
@@ -6455,21 +6532,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-inertia-composable@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "vue-inertia-composable@npm:0.3.4"
+"vue-inertia-composable@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "vue-inertia-composable@npm:0.4.0"
   dependencies:
     vue-demi: latest
   peerDependencies:
     "@inertiajs/inertia": "*"
-    "@inertiajs/inertia-vue": "*"
+    "@inertiajs/vue2": ^1.0.0
     "@vue/composition-api": ^1.7.1
     vue: ^2.6.14 || ^3.0.0
     ziggy-js: "*"
   peerDependenciesMeta:
     "@vue/composition-api":
       optional: true
-  checksum: b44990aa9a9536dc94720172cc4f3ad192d82f58586851e8de0703adeff670d4450312ae82d62ec00cb9aa2db0404ff2ee20834b5c2037609455c73faedfee9f
+  checksum: e8d4cfe31c11467554719ddb2d6955d993717989ad5d3f26d2d82f163dbf9f45aedbce73f6176b31236c00485e655c58a164ff91ef07c5437531a10f2a24fd8c
+  languageName: node
+  linkType: hard
+
+"vue-server-renderer@npm:^2.7.14":
+  version: 2.7.14
+  resolution: "vue-server-renderer@npm:2.7.14"
+  dependencies:
+    chalk: ^4.1.2
+    hash-sum: ^2.0.0
+    he: ^1.2.0
+    lodash.template: ^4.5.0
+    lodash.uniq: ^4.5.0
+    resolve: ^1.22.0
+    serialize-javascript: ^6.0.0
+    source-map: 0.5.6
+  checksum: 736672de638287d89c23b68a833e5d46e6c202cbd8af9850fac5da37e6682022932a866b0beafc40b50c9d699532e0d2446d11fae8153f0dc1938b75574671d4
   languageName: node
   linkType: hard
 

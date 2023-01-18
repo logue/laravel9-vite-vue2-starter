@@ -87,19 +87,13 @@
 
 <script lang="ts">
 import { defineComponent, type SetupContext } from 'vue';
-import { InertiaLink, route, useForm, usePage } from 'vue-inertia-composable';
+import { InertiaLink, route } from 'vue-inertia-composable';
+import { useForm, usePage } from '@inertiajs/vue2';
 
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-
-import type { InertiaForm } from '@inertiajs/inertia-vue';
-
-type TForm = {
-  name: string;
-  email: string;
-};
 
 export default defineComponent({
   /** Using Components */
@@ -128,12 +122,12 @@ export default defineComponent({
    * @param _context - Setup Context
    */
   setup(_props, _context: SetupContext) {
-    const user = usePage().props.value.auth.user;
+    const user = usePage().value.auth.user;
 
-    const form: InertiaForm<TForm | undefined> = useForm({
+    const form = useForm({
       name: user.name,
       email: user.email,
-    });
+    }) as any;
 
     return { user, form, route };
   },

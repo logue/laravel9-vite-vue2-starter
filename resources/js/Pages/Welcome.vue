@@ -282,8 +282,8 @@
 
 <script lang="ts">
 import { defineComponent, type SetupContext } from 'vue';
-import { Head as InertiaHead } from '@inertiajs/inertia-vue';
-import { InertiaLink, route, usePage } from 'vue-inertia-composable';
+import { Head as InertiaHead, usePage } from '@inertiajs/vue2';
+import { InertiaLink, route } from 'vue-inertia-composable';
 
 export default defineComponent({
   /** Using components */

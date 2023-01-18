@@ -43,18 +43,15 @@
 
 <script lang="ts">
 import { defineComponent, type SetupContext } from 'vue';
-import { route, useForm } from 'vue-inertia-composable';
+import { route } from 'vue-inertia-composable';
+import { useForm } from '@inertiajs/vue2';
 
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head as InertiaHead, type InertiaForm } from '@inertiajs/inertia-vue';
-
-type TForm = {
-  email: string;
-};
+import { Head as InertiaHead } from '@inertiajs/vue2';
 
 export default defineComponent({
   /** Using Components */
@@ -79,9 +76,9 @@ export default defineComponent({
    */
   setup(_rops, _context: SetupContext) {
     /** Inertia Form */
-    const form: InertiaForm<TForm | undefined> = useForm({
+    const form = useForm({
       email: '',
-    });
+    }) as any;
 
     /** Submit button clicked */
     const submit = () => {

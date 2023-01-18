@@ -45,11 +45,11 @@ import {
   type ComputedRef,
   type SetupContext,
 } from 'vue';
-import { InertiaLink, route, useForm } from 'vue-inertia-composable';
+import { InertiaLink, route } from 'vue-inertia-composable';
+import { Head as InertiaHead, useForm } from '@inertiajs/vue2';
 
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { Head as InertiaHead, type InertiaForm } from '@inertiajs/inertia-vue';
 
 export default defineComponent({
   /** Using Components */
@@ -72,7 +72,7 @@ export default defineComponent({
    */
   setup(props, _context: SetupContext) {
     /** Inertia Form */
-    const form: InertiaForm<object | undefined> = useForm({});
+    const form = useForm({}) as any;
 
     /** Verification email send flag */
     const verificationLinkSent: ComputedRef<boolean> = computed(

@@ -80,14 +80,14 @@
 
 <script lang="ts">
 import { defineComponent, type SetupContext } from 'vue';
-import { useForm, InertiaLink, route } from 'vue-inertia-composable';
+import { InertiaLink, route } from 'vue-inertia-composable';
 
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head as InertiaHead, type InertiaForm } from '@inertiajs/inertia-vue';
+import { Head as InertiaHead, useForm } from '@inertiajs/vue2';
 
 type TForm = {
   name: string;
@@ -115,13 +115,13 @@ export default defineComponent({
    * @param _context - Setup Context
    */
   setup(_props, _context: SetupContext) {
-    const form: InertiaForm<TForm | undefined> = useForm({
+    const form = useForm({
       name: '',
       email: '',
       password: '',
       password_confirmation: '',
       terms: false,
-    });
+    }) as any;
 
     const submit = () => {
       form.post(route('register'), {

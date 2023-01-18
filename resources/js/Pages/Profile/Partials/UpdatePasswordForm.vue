@@ -80,8 +80,8 @@
 
 <script lang="ts">
 import { ref, defineComponent, type Ref, type SetupContext } from 'vue';
-import { route, useForm } from 'vue-inertia-composable';
-import type { InertiaForm } from '@inertiajs/inertia-vue';
+import { route } from 'vue-inertia-composable';
+import { useForm } from '@inertiajs/vue2';
 
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -110,11 +110,11 @@ export default defineComponent({
     const passwordInput: Ref<typeof TextInput | undefined> = ref();
     const currentPasswordInput: Ref<typeof TextInput | undefined> = ref();
 
-    const form: InertiaForm<TForm | undefined> = useForm({
+    const form = useForm({
       current_password: '',
       password: '',
       password_confirmation: '',
-    });
+    }) as any;
 
     const updatePassword = () => {
       form.put(route('password.update'), {

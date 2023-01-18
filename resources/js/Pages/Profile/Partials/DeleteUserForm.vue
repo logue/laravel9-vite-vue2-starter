@@ -67,7 +67,8 @@ import {
   type Ref,
   type SetupContext,
 } from 'vue';
-import { useForm, route } from 'vue-inertia-composable';
+import { useForm } from '@inertiajs/vue2';
+import { route } from 'vue-inertia-composable';
 
 import DangerButton from '@/Components/DangerButton.vue';
 import InputError from '@/Components/InputError.vue';
@@ -75,11 +76,6 @@ import InputLabel from '@/Components/InputLabel.vue';
 import Modal from '@/Components/Modal.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import type { InertiaForm } from '@inertiajs/inertia-vue';
-
-type TForm = {
-  password: string;
-};
 
 export default defineComponent({
   /** Using Components */
@@ -101,9 +97,9 @@ export default defineComponent({
     const confirmingUserDeletion: Ref<boolean> = ref(false);
     const passwordInput: Ref<typeof TextInput | undefined> = ref();
 
-    const form: InertiaForm<TForm | undefined> = useForm({
+    const form = useForm({
       password: '',
-    });
+    }) as any;
 
     const confirmUserDeletion = () => {
       confirmingUserDeletion.value = true;

@@ -26,7 +26,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head as InertiaHead } from '@inertiajs/inertia-vue';
+import { Head as InertiaHead } from '@inertiajs/vue2';
 
 export default defineComponent({
   /** Using Components */

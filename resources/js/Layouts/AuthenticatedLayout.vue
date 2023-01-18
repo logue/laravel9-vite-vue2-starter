@@ -173,7 +173,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, type Ref, type SetupContext } from 'vue';
-import { InertiaLink, route, usePage } from 'vue-inertia-composable';
+import { InertiaLink, route } from 'vue-inertia-composable';
+import { usePage } from '@inertiajs/vue2';
 
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';

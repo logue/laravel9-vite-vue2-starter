@@ -3,8 +3,7 @@ import '../css/app.css';
 
 import Vue from 'vue';
 import teleport from '@logue/vue2-helpers/teleport';
-import { createInertiaApp } from '@inertiajs/inertia-vue';
-import { InertiaProgress } from '@inertiajs/progress';
+import { createInertiaApp } from '@inertiajs/vue2';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
@@ -16,13 +15,17 @@ const appName =
 
 createInertiaApp({
   title: title => `${title} - ${appName}`,
+  progress: {
+    color: import.meta.env.VITE_APP_INERTIA_PROGRESS_COLOR || '#4B5563',
+  },
   resolve: name =>
     // @ts-ignore
     resolvePageComponent(
       `./Pages/${name}.vue`,
       import.meta.glob('./Pages/**/*.vue')
     ),
-  setup({ el, app, props, plugin }) {
+  // @ts-ignore
+  setup({ el, App, props, plugin }) {
     // Add route function.
     Vue.mixin({ methods: { route: ziggy } });
     // Register Inertia
@@ -32,11 +35,6 @@ createInertiaApp({
     // @ts-ignore
     Vue.use(ZiggyVue, Ziggy);
 
-    const App = new Vue({ render: h => h(app, props) });
-    return App.$mount(el);
+    return new Vue({ render: h => h(App, props) }).$mount(el);
   },
-});
-
-InertiaProgress.init({
-  color: import.meta.env.VITE_APP_INERTIA_PROGRESS_COLOR || '#4B5563',
 });

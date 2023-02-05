@@ -22,7 +22,7 @@ export default defineConfig(
         // Laravel Vite
         // https://laravel.com/docs/9.x/vite
         laravel({
-          input: ['resources/css/app.css', 'resources/js/app.ts'],
+          input: 'resources/js/app.ts',
           ssr: 'resources/js/ssr.ts',
           refresh: true,
         }),

@@ -5,7 +5,7 @@
     <inertia-head title="Welcome" />
     <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
       <inertia-link
-        v-if="props.auth.user"
+        v-if="props.auth?.user"
         :href="route('dashboard')"
         class="text-sm text-gray-700 dark:text-gray-500 underline"
       >
@@ -283,7 +283,8 @@
 <script lang="ts">
 import { defineComponent, type SetupContext } from 'vue';
 import { Head as InertiaHead, usePage } from '@inertiajs/vue2';
-import { InertiaLink, route } from 'vue-inertia-composable';
+import { InertiaLink } from 'vue-inertia-composable';
+import route from 'ziggy-js';
 
 export default defineComponent({
   /** Using components */
@@ -311,6 +312,8 @@ export default defineComponent({
   setup(_props, _context: SetupContext) {
     /** Get inartia page instance */
     const page = usePage();
+
+    console.log(route('login'));
 
     return {
       ...page,

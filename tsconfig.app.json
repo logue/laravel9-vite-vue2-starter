@@ -9,9 +9,8 @@
   ],
   "exclude": ["resources/**/__tests__/*"],
   "compilerOptions": {
-    "baseUrl": ".",
     "composite": true,
-    "noImplicitAny": false,
+    "baseUrl": ".",
     "paths": { "@/*": ["./resources/js/*"] }
   },
   "vueCompilerOptions": { "target": 2.7 }

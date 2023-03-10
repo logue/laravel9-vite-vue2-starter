@@ -110,7 +110,7 @@ export default defineComponent({
     const passwordInput: Ref<typeof TextInput | undefined> = ref();
     const currentPasswordInput: Ref<typeof TextInput | undefined> = ref();
 
-    const form = useForm({
+    const form = useForm<TForm>({
       current_password: '',
       password: '',
       password_confirmation: '',

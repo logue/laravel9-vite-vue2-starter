@@ -7,14 +7,6 @@ declare module '*.vue' {
   export default Vue;
 }
 
-/** VueRouter fix */
-declare module 'vue' {
-  export interface GlobalComponents {
-    RouterLink: typeof import('vue-router')['RouterLink'];
-    RouterView: typeof import('vue-router')['RouterView'];
-  }
-}
-
 /**
  * Augment vue-test-utils to add support for Vue 2.7.
  *

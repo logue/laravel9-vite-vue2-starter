@@ -13,6 +13,7 @@ stats.html
 !.vscode/extensions.json
 /.fleet
 /.idea
+/bootstrap
 /node_modules
 /public/build
 /public/hot

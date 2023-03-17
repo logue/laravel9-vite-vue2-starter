@@ -1,6 +1,5 @@
 // @ts-nocheck
 import _ from 'lodash';
-window._ = _;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -8,6 +7,7 @@ window._ = _;
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 import axios from 'axios';
+window._ = _;
 axios.defaults.baseURL = Ziggy.url;
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.withCredentials = true;

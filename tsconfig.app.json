@@ -11,7 +11,12 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
-    "paths": { "@/*": ["./resources/js/*"] }
+    "allowJs": true,
+    "paths": {
+      "@/*": ["./resources/js/*"],
+      "~/*": ["./node_modules/*"],
+      "ziggy-vue": ["./vendor/tightenco/ziggy/dist/vue.m"]
+    }
   },
   "vueCompilerOptions": { "target": 2.7 }
 }

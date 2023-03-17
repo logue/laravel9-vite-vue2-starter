@@ -1,4 +1,3 @@
-// eslint-disable-next-line spaced-comment
 /// <reference types="vite/client" />
 
 /** Vue */
@@ -7,17 +6,24 @@ declare module '*.vue' {
   export default Vue;
 }
 
+declare module 'ziggy-vue';
+
 /**
  * Augment vue-test-utils to add support for Vue 2.7.
  *
  * @see {@link https://github.com/vuejs/vue-test-utils/issues/2026#issuecomment-1429963862}
  */
 declare module '@vue/test-utils' {
-  /** Component declared with defineComponent */
+  /**
+   * Component declared with defineComponent
+   *
+   * @param component
+   * @param options
+   */
   export function mount<
-    PropsOrPropOptions = {},
-    RawBindings = {},
-    D = {},
+    PropsOrPropOptions = Record<StaticRangeInit, any>,
+    RawBindings = Record<StaticRangeInit, any>,
+    D = Record<StaticRangeInit, any>,
     C extends ComputedOptions = ComputedOptions,
     M extends MethodOptions = MethodOptions,
     Mixin extends ComponentOptionsMixin = ComponentOptionsMixin,
@@ -25,7 +31,10 @@ declare module '@vue/test-utils' {
     E extends EmitsOptions = Record<string, any>,
     EE extends string = string,
     Props = Readonly<ExtractPropTypes<PropsOrPropOptions>>,
-    Defaults extends {} = ExtractDefaultPropTypes<PropsOrPropOptions>
+    Defaults extends Record<
+      StaticRangeInit,
+      any
+    > = ExtractDefaultPropTypes<PropsOrPropOptions>
   >(
     component: DefineComponent<
       PropsOrPropOptions,
@@ -59,11 +68,16 @@ declare module '@vue/test-utils' {
     >
   >;
 
-  /** Component declared with defineComponent */
+  /**
+   * Component declared with defineComponent
+   *
+   * @param component
+   * @param options
+   */
   export function shallowMount<
-    PropsOrPropOptions = {},
-    RawBindings = {},
-    D = {},
+    PropsOrPropOptions = Record<StaticRangeInit, any>,
+    RawBindings = Record<StaticRangeInit, any>,
+    D = Record<StaticRangeInit, any>,
     C extends ComputedOptions = ComputedOptions,
     M extends MethodOptions = MethodOptions,
     Mixin extends ComponentOptionsMixin = ComponentOptionsMixin,
@@ -71,7 +85,10 @@ declare module '@vue/test-utils' {
     E extends EmitsOptions = Record<string, any>,
     EE extends string = string,
     Props = Readonly<ExtractPropTypes<PropsOrPropOptions>>,
-    Defaults extends {} = ExtractDefaultPropTypes<PropsOrPropOptions>
+    Defaults extends Record<
+      StaticRangeInit,
+      any
+    > = ExtractDefaultPropTypes<PropsOrPropOptions>
   >(
     component: DefineComponent<
       PropsOrPropOptions,

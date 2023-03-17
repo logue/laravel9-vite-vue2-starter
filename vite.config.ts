@@ -5,8 +5,8 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue2';
 
 import { fileURLToPath, URL } from 'node:url';
-import fs from 'node:fs';
-import os from 'node:os';
+import { writeFileSync } from 'node:fs';
+// import os from 'node:os';
 
 /**
  * Vite Configure
@@ -45,15 +45,6 @@ export default defineConfig(
             lintCommand: 'eslint', // for example, lint .ts & .tsx
           },
         }),
-        /*
-      // if you use Code encryption by rollup-plugin-obfuscator
-      // https://github.com/ghostdevv/rollup-obfuscator
-      obfuscator({
-        globalOptions: {
-          debugProtection: true,
-        },
-      }),
-      */
       ],
       // Resolver
       resolve: {
@@ -63,7 +54,7 @@ export default defineConfig(
           '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
           '~': fileURLToPath(new URL('./node_modules', import.meta.url)),
           'ziggy-vue': fileURLToPath(
-            new URL('./vendor/tightenco/ziggy/dist/vue', import.meta.url)
+            new URL('./vendor/tightenco/ziggy/dist/vue.m', import.meta.url)
           ),
         },
         extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
@@ -74,14 +65,16 @@ export default defineConfig(
           // Allow serving files from one level up to the project root
           allow: ['..'],
         },
-        host: process.env.LARAVEL_SAIL
-          ? Object.values(os.networkInterfaces())
-              .flat()
-              .find(info => info?.internal === false)?.address
-          : undefined,
+        /*
+        host:
+          process.env.LARAVEL_SAIL ??
+          Object.values(os.networkInterfaces())
+            .flat()
+            .find(info => info?.internal === false)?.address,
         hmr: {
           host: 'localhost',
         },
+        */
       },
       optimizeDeps: {
         include: ['ziggy'],
@@ -89,52 +82,53 @@ export default defineConfig(
       // Build Options
       // https://vitejs.dev/config/#build-options
       build: {
-        rollupOptions: ssrBuild
-          ? {}
-          : {
-              external: 'ziggy',
-              output: {
-                manualChunks: {
-                  // Split external library from transpiled code.
-                  vue: [
-                    'vue',
-                    // 'vue-router',
-                    // 'vuex',
-                    // 'vuex-persist',
-                    'deepmerge',
-                    // '@logue/vue2-helpers',
-                    // '@logue/vue2-helpers/vuex',
-                    '@logue/vue2-helpers/teleport',
+        rollupOptions:
+          ssrBuild === true
+            ? undefined
+            : {
+                external: 'ziggy',
+                output: {
+                  manualChunks: {
+                    // Split external library from transpiled code.
+                    vue: [
+                      'vue',
+                      // 'vue-router',
+                      // 'vuex',
+                      // 'vuex-persist',
+                      'deepmerge',
+                      // '@logue/vue2-helpers',
+                      // '@logue/vue2-helpers/vuex',
+                      '@logue/vue2-helpers/teleport',
+                    ],
+                    inertia: [
+                      '@inertiajs/inertia',
+                      '@inertiajs/vue2',
+                      'axios',
+                      'get-intrinsic',
+                      'laravel-vite-plugin/inertia-helpers/index.js',
+                      'nprogress',
+                      'object-inspect',
+                      'qs',
+                      'vendor/tightenco/ziggy/dist/vue.m.js',
+                      'vue-inertia-composable',
+                      'ziggy-js',
+                    ],
+                    lodash: ['lodash'],
+                  },
+                  plugins: [
+                    mode === 'analyze'
+                      ? // rollup-plugin-visualizer
+                        // https://github.com/btd/rollup-plugin-visualizer
+                        visualizer({
+                          open: true,
+                          filename: './docs/stats.html',
+                          // gzipSize: true,
+                          // brotliSize: true,
+                        })
+                      : undefined,
                   ],
-                  inertia: [
-                    '@inertiajs/inertia',
-                    '@inertiajs/vue2',
-                    'axios',
-                    'get-intrinsic',
-                    'laravel-vite-plugin/inertia-helpers/index.js',
-                    'nprogress',
-                    'object-inspect',
-                    'qs',
-                    'vendor/tightenco/ziggy/dist/vue.m.js',
-                    'vue-inertia-composable',
-                    'ziggy-js',
-                  ],
-                  lodash: ['lodash'],
                 },
-                plugins: [
-                  mode === 'analyze'
-                    ? // rollup-plugin-visualizer
-                      // https://github.com/btd/rollup-plugin-visualizer
-                      visualizer({
-                        open: true,
-                        filename: './docs/stats.html',
-                        // gzipSize: true,
-                        // brotliSize: true,
-                      })
-                    : undefined,
-                ],
               },
-            },
         target: 'esnext',
         minify: 'esbuild',
       },
@@ -145,7 +139,7 @@ export default defineConfig(
     };
 
     // Write meta data.
-    fs.writeFileSync(
+    writeFileSync(
       fileURLToPath(new URL('resources/js/meta.ts', import.meta.url)),
       `// This file is auto-generated by the build system.
 export default {

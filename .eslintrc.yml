@@ -1,12 +1,8 @@
-root: true
 env:
   browser: true
-  es2016: true # Vue recommended
-  node: true
+  es2021: true
 extends:
-  - eslint:recommended
-  - google
-  - plugin:@typescript-eslint/eslint-recommended
+  - standard-with-typescript
   - plugin:import/recommended
   - plugin:import/typescript
   - plugin:jsdoc/recommended
@@ -14,54 +10,54 @@ extends:
   - plugin:vuejs-accessibility/recommended
   - plugin:yaml/recommended
   - '@vue/eslint-config-prettier'
-plugins:
-  - '@typescript-eslint'
-  - jsdoc
-  - tsdoc
-  - html
-  - yaml
-  - vue
-parser: vue-eslint-parser
 parserOptions:
   ecmaVersion: latest
   parser: '@typescript-eslint/parser'
   sourceType: module
-  createDefaultProgram: true
   project:
-    - ./tsconfig.json
+    - ./tsconfig.app.json
+    - ./tsconfig.config.json
+  extraFileExtensions:
+    - .vue
+plugins:
+  - import
+  - tsdoc
+  - html
+  - yaml
+  - vue
 rules:
-  new-cap: off
-  no-invalid-this: off
-  no-unused-vars: warn
   require-jsdoc: warn
-  valid-jsdoc: off
-  jsdoc/require-param-type: off
-  jsdoc/require-param:
-    - off
-    - enableRootFixer: false
-  jsdoc/require-returns-description: off
-  jsdoc/require-returns-type: off
-  jsdoc/require-returns: off
+  no-unused-vars: warn
+  '@typescript-eslint/ban-ts-comment': off
+  '@typescript-eslint/no-confusing-void-expression': off
+  '@typescript-eslint/strict-boolean-expressions': off
+  '@typescript-eslint/triple-slash-reference': off
   tsdoc/syntax: warn
   vue/html-self-closing:
     - error
     - html:
         void: always
   vue/multi-word-component-names: warn
+overrides:
+  - files:
+      - '*.html'
+    processor: vue/.vue
 settings:
   import/parsers:
     '@typescript-eslint/parser':
-      - .ts
-      - .tsx
+      - '*.ts'
+      - '*.tsx'
     vue-eslint-parser:
-      - .vue
+      - '*.vue'
   import/resolver:
-    typescript: true
+    typescript:
+      project: ./tsconfig.*.json
+    node: true
     alias:
       map:
         - ['@', './resources/js']
         - ['~', './node_modules']
-        - ['ziggy-vue', './vendor/tightenco/ziggy/dist/vue.m.js']
+        - ['ziggy-vue', './vendor/tightenco/ziggy/dist/vue.m']
       extensions:
         - .js
         - .ts

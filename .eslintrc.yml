@@ -1,22 +1,29 @@
 env:
   browser: true
   es2021: true
+  node: true
 extends:
   - standard-with-typescript
   - plugin:import/recommended
   - plugin:import/typescript
-  - plugin:jsdoc/recommended
   - plugin:vue/recommended
   - plugin:vuejs-accessibility/recommended
   - plugin:yaml/recommended
   - '@vue/eslint-config-prettier'
+overrides:
+  - files:
+      - '*.html'
+    processor: vue/.vue
+parser: vue-eslint-parser
 parserOptions:
   ecmaVersion: latest
   parser: '@typescript-eslint/parser'
   sourceType: module
+  createDefaultProgram: true
   project:
     - ./tsconfig.app.json
-    - ./tsconfig.config.json
+    - ./tsconfig.node.json
+    - ./tsconfig.vitest.json
   extraFileExtensions:
     - .vue
 plugins:
@@ -30,6 +37,9 @@ rules:
   no-unused-vars: warn
   '@typescript-eslint/ban-ts-comment': off
   '@typescript-eslint/no-confusing-void-expression': off
+  '@typescript-eslint/no-floating-promises': off
+  '@typescript-eslint/no-invalid-void-type': off
+  '@typescript-eslint/prefer-nullish-coalescing': off
   '@typescript-eslint/strict-boolean-expressions': off
   '@typescript-eslint/triple-slash-reference': off
   tsdoc/syntax: warn
@@ -38,10 +48,6 @@ rules:
     - html:
         void: always
   vue/multi-word-component-names: warn
-overrides:
-  - files:
-      - '*.html'
-    processor: vue/.vue
 settings:
   import/parsers:
     '@typescript-eslint/parser':

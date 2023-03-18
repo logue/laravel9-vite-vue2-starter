@@ -17,8 +17,8 @@ declare module '@vue/test-utils' {
   /**
    * Component declared with defineComponent
    *
-   * @param component
-   * @param options
+   * @param component -
+   * @param options -
    */
   export function mount<
     PropsOrPropOptions = Record<StaticRangeInit, any>,
@@ -71,8 +71,8 @@ declare module '@vue/test-utils' {
   /**
    * Component declared with defineComponent
    *
-   * @param component
-   * @param options
+   * @param component -
+   * @param options -
    */
   export function shallowMount<
     PropsOrPropOptions = Record<StaticRangeInit, any>,

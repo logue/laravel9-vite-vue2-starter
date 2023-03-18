@@ -5,10 +5,13 @@
     "vite.config.*",
     "vitest.config.*",
     "cypress.config.*",
-    "playwright.config.*"
+    "playwright.config.*",
+    "postcss.config.*",
+    "tailwind.config.*"
   ],
   "compilerOptions": {
     "composite": true,
+    "allowJs": true,
     "types": ["node"]
   }
 }

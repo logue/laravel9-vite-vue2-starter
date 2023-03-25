@@ -34,12 +34,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Head as InertiaHead } from '@inertiajs/vue2';
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
-import { Head as InertiaHead } from '@inertiajs/vue2';
 
 export default defineComponent({
   components: {

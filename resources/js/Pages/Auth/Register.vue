@@ -115,13 +115,13 @@ export default defineComponent({
    * @param _context - Setup Context
    */
   setup(_props, _context: SetupContext) {
-    const form = useForm({
+    const form = useForm<TForm>({
       name: '',
       email: '',
       password: '',
       password_confirmation: '',
       terms: false,
-    }) as any;
+    });
 
     const submit = () => {
       form.post(route('register'), {

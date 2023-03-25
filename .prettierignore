@@ -5,5 +5,4 @@ bootstrap/
 public/
 storage/
 vendor/
-resources/js/ziggy.js
 stats.html

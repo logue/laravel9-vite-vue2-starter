@@ -1,6 +1,7 @@
 .husky/
 .vscode/
 .yarn/
+bootstrap/
 public/
 storage/
 vendor/

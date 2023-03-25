@@ -30,7 +30,7 @@
           required
           autocomplete="current-password"
         />
-        <InputError class="mt-2" :message="form.errors.password" />
+        <input-error class="mt-2" :message="form.errors.password" />
       </div>
 
       <div class="block mt-4">

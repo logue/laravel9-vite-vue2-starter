@@ -3,7 +3,7 @@
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": [
     "env.d.ts",
-    "components.d.ts",
+    "vendor/tightenco/ziggy/dist/vue.m.js",
     "resources/**/*",
     "resources/**/*.vue"
   ],
@@ -11,7 +11,6 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
-    "allowJs": true,
     "paths": {
       "@/*": ["./resources/js/*"],
       "~/*": ["./node_modules/*"],

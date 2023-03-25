@@ -17,6 +17,8 @@
           <div
             v-show="show"
             class="fixed inset-0 transform transition-all"
+            role="button"
+            tabindex="0"
             @click="close"
             @keydown="closeOnEscape"
           >

@@ -122,7 +122,7 @@ export default defineComponent({
    * @param _context - Setup Context
    */
   setup(_props, _context: SetupContext) {
-    const user = usePage().value.auth.user;
+    const user = usePage().props.auth.user;
 
     const form = useForm({
       name: user.name,

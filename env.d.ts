@@ -1,5 +1,15 @@
 /// <reference types="vite/client" />
 
+export declare global {
+  import type { AxiosStatic } from 'axios';
+  import type { Config } from 'ziggy-js';
+  interface Window {
+    // add you custom properties and methods
+    axios: AxiosStatic;
+  }
+  const Ziggy: Config;
+}
+
 /** Vue */
 declare module '*.vue' {
   import Vue from 'vue';

@@ -1,10 +1,11 @@
-import { createInertiaApp } from '@inertiajs/vue2';
+import Vue, { type DefineComponent } from 'vue';
 import { createRenderer } from 'vue-server-renderer';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from 'ziggy-vue';
+import { createInertiaApp } from '@inertiajs/vue2';
 import createServer from '@inertiajs/vue2/server';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+// @ts-expect-error
+import { ZiggyVue } from 'ziggy-vue';
 import teleport from '@logue/vue2-helpers/teleport';
-import Vue from 'vue';
 import ziggy from 'ziggy-js';
 
 /** Application Name */
@@ -17,10 +18,9 @@ createServer(
       page,
       render: createRenderer().renderToString,
       resolve: async name =>
-        // @ts-expect-error
         await resolvePageComponent(
           `./Pages/${name}.vue`,
-          import.meta.glob('./Pages/**/*.vue')
+          import.meta.glob<DefineComponent>('./Pages/**/*.vue')
         ),
       setup({ App, props, plugin }) {
         // Add route function.
@@ -29,8 +29,13 @@ createServer(
         Vue.use(plugin);
         // Telepot for vue2.
         Vue.component('Teleport', teleport);
-        // @ts-expect-error
-        Vue.use(ZiggyVue, Ziggy);
+
+        Vue.use(ZiggyVue, {
+          // @ts-expect-error
+          ...page.props.ziggy,
+          // @ts-expect-error
+          location: new URL(page.props.ziggy.location),
+        });
         // @ts-expect-error
         return new Vue({ render: h => h(App, props) });
       },

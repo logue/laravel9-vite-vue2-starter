@@ -19,12 +19,7 @@
 
               <!-- Navigation Links -->
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <NavLink
-                  :href="route('dashboard')"
-                  :active="route().current('dashboard')"
-                >
-                  Dashboard
-                </NavLink>
+                <nav-link :href="route('dashboard')">Dashboard</nav-link>
               </div>
             </div>
 
@@ -119,10 +114,7 @@
           class="sm:hidden"
         >
           <div class="pt-2 pb-3 space-y-1">
-            <responsive-nav-link
-              :href="route('dashboard')"
-              :active="route().current('dashboard')"
-            >
+            <responsive-nav-link :href="route('dashboard')">
               Dashboard
             </responsive-nav-link>
           </div>

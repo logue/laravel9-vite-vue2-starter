@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "private": true,
+  "type": "module",
   "engines": {
     "node": ">=18.16.0",
     "yarn": ">=1.22.19"
@@ -38,7 +39,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node-lts": "^18.12.1",
     "@types/lodash": "^4.14.194",
-    "@types/node": "^20.1.1",
+    "@types/node": "^20.1.2",
     "@types/ziggy-js": "^1.3.2",
     "@typescript-eslint/eslint-plugin": "^5.59.5",
     "@typescript-eslint/parser": "^5.59.5",
@@ -59,7 +60,7 @@
     "eslint-plugin-vuejs-accessibility": "^2.1.0",
     "eslint-plugin-yaml": "^0.5.0",
     "husky": "^8.0.3",
-    "laravel-vite-plugin": "^0.7.5",
+    "laravel-vite-plugin": "^0.7.6",
     "lint-staged": "^13.2.2",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.23",

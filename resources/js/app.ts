@@ -32,7 +32,6 @@ await createInertiaApp({
     // Telepot for vue2.
     Vue.component('Teleport', teleport);
     Vue.use(ZiggyVue, Ziggy);
-    // @ts-expect-error
     return new Vue({ render: h => h(App, props) }).$mount(el);
   },
 });

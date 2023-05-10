@@ -1,24 +1,21 @@
 env:
   browser: true
   es2022: true
-  node: true
 extends:
+  - plugin:vue/recommended
   - standard-with-typescript
   - plugin:import/recommended
   - plugin:import/typescript
-  - plugin:vue/recommended
   - plugin:vuejs-accessibility/recommended
   - plugin:yaml/recommended
   - '@vue/eslint-config-prettier'
-overrides:
-  - files:
-      - '*.html'
-    processor: vue/.vue
+overrides: []
 parser: vue-eslint-parser
 parserOptions:
   ecmaVersion: latest
   parser: '@typescript-eslint/parser'
   sourceType: module
+  createDefaultProgram: true
   project:
     - ./tsconfig.app.json
     - ./tsconfig.node.json
@@ -33,38 +30,39 @@ plugins:
 rules:
   require-jsdoc: warn
   no-unused-vars: warn
-  '@typescript-eslint/ban-ts-comment': off
-  '@typescript-eslint/no-confusing-void-expression': off
-  '@typescript-eslint/strict-boolean-expressions': off
-  '@typescript-eslint/triple-slash-reference': off
-  '@typescript-eslint/no-dynamic-delete': off
-  '@typescript-eslint/no-floating-promises': off
-  '@typescript-eslint/no-extraneous-class': off
   '@typescript-eslint/array-type':
     - error
     - default: array
     - readonly: array
+  '@typescript-eslint/ban-ts-comment': off
+  '@typescript-eslint/explicit-function-return-type': off
+  '@typescript-eslint/no-confusing-void-expression': off
+  '@typescript-eslint/no-dynamic-delete': off
+  '@typescript-eslint/no-extraneous-class': off
+  '@typescript-eslint/no-floating-promises': off
+  '@typescript-eslint/prefer-nullish-coalescing': off
+  '@typescript-eslint/strict-boolean-expressions': off
+  '@typescript-eslint/triple-slash-reference': off
+  import/default: off
+  import/no-default-export: off
   tsdoc/syntax: warn
   vue/html-self-closing:
     - error
     - html:
         void: always
   vue/multi-word-component-names: warn
-  vue/no-template-shadow: off # for Vuetify tooltip fix
 globals:
   route: true
   Ziggy: readonly
 settings:
   import/parsers:
     '@typescript-eslint/parser':
-      - '*.ts'
-      - '*.tsx'
+      - .ts
+      - .tsx
     vue-eslint-parser:
-      - '*.vue'
+      - .vue
   import/resolver:
-    typescript:
-      project: ./tsconfig.*.json
-    node: true
+    typescript: true
     alias:
       map:
         - ['@', './resources/js']
@@ -76,3 +74,5 @@ settings:
         - .jsx
         - .tsx
         - .vue
+  vite:
+    configPath: ./vite.config.ts

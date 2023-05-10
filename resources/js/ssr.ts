@@ -36,7 +36,6 @@ createServer(
           // @ts-expect-error
           location: new URL(page.props.ziggy.location),
         });
-        // @ts-expect-error
         return new Vue({ render: h => h(App, props) });
       },
       progress: {

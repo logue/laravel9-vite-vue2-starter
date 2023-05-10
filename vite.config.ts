@@ -1,6 +1,7 @@
 import { checker } from 'vite-plugin-checker';
 import { defineConfig, type UserConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
+// @ts-expect-error
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue2';
 
@@ -105,7 +106,6 @@ export default defineConfig(
                       '@inertiajs/vue2',
                       'axios',
                       'get-intrinsic',
-                      'laravel-vite-plugin/inertia-helpers/index.js',
                       'nprogress',
                       'object-inspect',
                       'qs',
@@ -135,6 +135,11 @@ export default defineConfig(
       esbuild: {
         // Drop console when production build.
         drop: command === 'serve' ? [] : ['console'],
+      },
+      // SSR Options
+      // https://vitejs.dev/config/ssr-options.html#ssr-options
+      ssr: {
+        noExternal: ['laravel-vite-plugin', '@inertiajs/server'],
       },
     };
 

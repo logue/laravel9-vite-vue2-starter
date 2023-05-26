@@ -60,6 +60,7 @@
 </template>
 
 <script lang="ts">
+import { useForm } from '@inertiajs/vue2';
 import {
   defineComponent,
   nextTick,
@@ -67,7 +68,6 @@ import {
   type Ref,
   type SetupContext,
 } from 'vue';
-import { useForm } from '@inertiajs/vue2';
 import { route } from 'vue-inertia-composable';
 
 import DangerButton from '@/Components/DangerButton.vue';

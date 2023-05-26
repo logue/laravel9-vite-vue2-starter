@@ -1,12 +1,14 @@
-import Vue, { type DefineComponent } from 'vue';
-import { createRenderer } from 'vue-server-renderer';
 import { createInertiaApp } from '@inertiajs/vue2';
 import createServer from '@inertiajs/vue2/server';
+import Vue, { type DefineComponent } from 'vue';
+
+import teleport from '@logue/vue2-helpers/teleport';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { createRenderer } from 'vue-server-renderer';
+import ziggy from 'ziggy-js';
+
 // @ts-expect-error
 import { ZiggyVue } from 'ziggy-vue';
-import teleport from '@logue/vue2-helpers/teleport';
-import ziggy from 'ziggy-js';
 
 /** Application Name */
 const appName: string = import.meta.env.APP_NAME ?? 'Laravel';

@@ -24,8 +24,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
 import { Head as InertiaHead } from '@inertiajs/vue2';
+import { defineComponent } from 'vue';
+
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 export default defineComponent({

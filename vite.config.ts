@@ -1,13 +1,12 @@
-import { checker } from 'vite-plugin-checker';
-import { defineConfig, type UserConfig } from 'vite';
-import { visualizer } from 'rollup-plugin-visualizer';
-// @ts-expect-error
-import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue2';
-
-import { fileURLToPath, URL } from 'node:url';
 import { writeFileSync } from 'node:fs';
-// import os from 'node:os';
+import { fileURLToPath, URL } from 'node:url';
+
+import vue from '@vitejs/plugin-vue2';
+import { defineConfig, type UserConfig } from 'vite';
+
+import laravel from 'laravel-vite-plugin';
+import { visualizer } from 'rollup-plugin-visualizer';
+import { checker } from 'vite-plugin-checker';
 
 /**
  * Vite Configure

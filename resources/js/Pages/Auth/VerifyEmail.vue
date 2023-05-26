@@ -39,6 +39,7 @@
 </template>
 
 <script lang="ts">
+import { Head as InertiaHead, useForm } from '@inertiajs/vue2';
 import {
   computed,
   defineComponent,
@@ -46,10 +47,9 @@ import {
   type SetupContext,
 } from 'vue';
 import { InertiaLink, route } from 'vue-inertia-composable';
-import { Head as InertiaHead, useForm } from '@inertiajs/vue2';
 
-import GuestLayout from '@/Layouts/GuestLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
 
 export default defineComponent({
   /** Using Components */

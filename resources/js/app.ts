@@ -2,13 +2,14 @@ import './bootstrap';
 import '../css/app.css';
 
 import { createInertiaApp } from '@inertiajs/vue2';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-// @ts-expect-error
-import { ZiggyVue } from 'ziggy-vue';
-import teleport from '@logue/vue2-helpers/teleport';
 import Vue, { type DefineComponent } from 'vue';
 
+import teleport from '@logue/vue2-helpers/teleport';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import ziggy from 'ziggy-js';
+
+// @ts-expect-error
+import { ZiggyVue } from 'ziggy-vue';
 
 /** Application Name */
 const appName =

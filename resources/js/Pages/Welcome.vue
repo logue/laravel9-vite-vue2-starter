@@ -356,8 +356,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type SetupContext } from 'vue';
 import { Head as InertiaHead, usePage } from '@inertiajs/vue2';
+import { defineComponent, type SetupContext } from 'vue';
 import { InertiaLink, route } from 'vue-inertia-composable';
 
 export default defineComponent({

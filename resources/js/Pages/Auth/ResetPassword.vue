@@ -58,15 +58,15 @@
 </template>
 
 <script lang="ts">
+import { Head as InertiaHead, useForm } from '@inertiajs/vue2';
 import { defineComponent, type SetupContext } from 'vue';
 import { route } from 'vue-inertia-composable';
-import { Head as InertiaHead, useForm } from '@inertiajs/vue2';
 
-import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
 
 export default defineComponent({
   /** Using Components */

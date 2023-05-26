@@ -86,9 +86,9 @@
 </template>
 
 <script lang="ts">
+import { useForm, usePage } from '@inertiajs/vue2';
 import { defineComponent, type SetupContext } from 'vue';
 import { InertiaLink, route } from 'vue-inertia-composable';
-import { useForm, usePage } from '@inertiajs/vue2';
 
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';

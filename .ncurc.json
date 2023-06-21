@@ -1,4 +1,0 @@
-{
-  "upgrade": true,
-  "reject": ["typescript", "vue", "vue-router", "vuex"]
-}

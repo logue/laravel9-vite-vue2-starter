@@ -44,7 +44,7 @@ declare module '@vue/test-utils' {
     Defaults extends Record<
       StaticRangeInit,
       any
-    > = ExtractDefaultPropTypes<PropsOrPropOptions>
+    > = ExtractDefaultPropTypes<PropsOrPropOptions>,
   >(
     component: DefineComponent<
       PropsOrPropOptions,
@@ -98,7 +98,7 @@ declare module '@vue/test-utils' {
     Defaults extends Record<
       StaticRangeInit,
       any
-    > = ExtractDefaultPropTypes<PropsOrPropOptions>
+    > = ExtractDefaultPropTypes<PropsOrPropOptions>,
   >(
     component: DefineComponent<
       PropsOrPropOptions,

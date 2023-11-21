@@ -14,13 +14,14 @@ import { checker } from 'vite-plugin-checker';
  * @see {@link https://vitejs.dev/config/}
  */
 export default defineConfig(
-  async ({ command, mode, ssrBuild }): Promise<UserConfig> => {
+  async ({ command, mode, isSsrBuild }): Promise<UserConfig> => {
     const config: UserConfig = {
       // https://vitejs.dev/config/shared-options.html#base
       base: './',
       plugins: [
         // Laravel Vite
         // https://laravel.com/docs/9.x/vite
+        // @ts-expect-error
         laravel({
           input: 'resources/js/app.ts',
           ssr: 'resources/js/ssr.ts',
@@ -28,6 +29,7 @@ export default defineConfig(
         }),
         // Vue2
         // https://github.com/vitejs/vite-plugin-vue2
+        // @ts-expect-error
         vue({
           template: {
             transformAssetUrls: {
@@ -83,7 +85,7 @@ export default defineConfig(
       // https://vitejs.dev/config/#build-options
       build: {
         rollupOptions:
-          ssrBuild === true
+          isSsrBuild === true
             ? undefined
             : {
                 external: 'ziggy',
